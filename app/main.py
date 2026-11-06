@@ -15,14 +15,20 @@ from app.db.sqlite import StandingsRepository
 from app.services.base import StandingsProvider
 from app.services.demo_provider import DemoProvider
 from app.services.football_data_provider import FootballDataProvider
+from app.services.openfoot_provider import OpenFootProvider
 from app.services.refresh_scheduler import RefreshScheduler
 from app.services.standings_service import StandingsService
 
 
-def build_provider(settings: Settings) -> StandingsProvider:
+def build_providers(settings: Settings) -> list[StandingsProvider]:
+    providers: list[StandingsProvider] = []
     if settings.football_data_api_key:
-        return FootballDataProvider(settings)
-    return DemoProvider()
+        providers.append(FootballDataProvider(settings))
+    else:
+        providers.append(DemoProvider())
+    if settings.openfoot_api_key:
+        providers.append(OpenFootProvider(settings))
+    return providers
 
 
 def create_app() -> FastAPI:
@@ -33,10 +39,10 @@ def create_app() -> FastAPI:
         repository = StandingsRepository(settings.database_path)
         repository.init_schema()
 
-        provider = build_provider(settings)
+        providers = build_providers(settings)
         catalog = LeagueCatalog(DEFAULT_LEAGUES)
         scheduler = RefreshScheduler(
-            provider,
+            providers,
             repository,
             catalog,
             interval_seconds=settings.refresh_interval_seconds,
@@ -49,7 +55,7 @@ def create_app() -> FastAPI:
 
         # In demo mode (no network) also load standings synchronously so the API
         # is immediately ready and tests are deterministic.
-        if provider.source == "demo":
+        if providers and all(provider.source == "demo" for provider in providers):
             scheduler.refresh_standings()
 
         app.state.standings_service = StandingsService(repository, catalog)

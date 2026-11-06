@@ -10,6 +10,7 @@ import {
   leagueNames,
   countryNames,
   teamNamesUk,
+  teamNamesUkByName,
   type Language,
   type Translation,
 } from './translations'
@@ -50,8 +51,11 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       teamName: (team) => {
         const fallback = team.short_name || team.name
         if (language !== 'uk') return fallback
-        const translated = team.id != null ? teamNamesUk[String(team.id)] : undefined
-        return translated ?? fallback
+        const byId = team.id != null ? teamNamesUk[String(team.id)] : undefined
+        const byName =
+          teamNamesUkByName[team.name] ??
+          (team.short_name ? teamNamesUkByName[team.short_name] : undefined)
+        return byId ?? byName ?? fallback
       },
     }),
     [language],

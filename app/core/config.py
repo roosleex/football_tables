@@ -42,6 +42,14 @@ class Settings(BaseSettings):
     # (Championship), "BL2" (2. Bundesliga), "SB" (Serie B), "FL2" (Ligue 2).
     excluded_league_codes: list[str] = ["ELC"]
 
+    # openfootapi.com integration: a secondary standings source for leagues not
+    # covered by football-data.org (currently the Ukrainian Premier League).
+    # OPENFOOT_API_KEY authenticates requests; FOOTAPI_MAX_REQUESTS_PER_MINUTE
+    # controls its per-minute request budget.
+    openfoot_api_key: str | None = None
+    openfoot_base_url: str = "https://openfootapi.com"
+    footapi_max_requests_per_minute: int = 60
+
     cors_origins: list[str] = [
         "http://localhost:5173",
         "http://127.0.0.1:5173",

@@ -111,6 +111,7 @@ export const leagueNames: Record<Language, Record<string, string>> = {
     SA: 'Serie A',
     FL1: 'Ligue 1',
     DED: 'Eredivisie',
+    comp_premier_league_ukr: 'Ukrainian Premier League',
   },
   uk: {
     PL: "Прем'єр-ліга",
@@ -119,6 +120,7 @@ export const leagueNames: Record<Language, Record<string, string>> = {
     SA: 'Серія А',
     FL1: 'Ліга 1',
     DED: 'Ередивізі',
+    comp_premier_league_ukr: "Українська Прем'єр-ліга",
   },
 }
 
@@ -130,6 +132,7 @@ export const countryNames: Record<Language, Record<string, string>> = {
     IT: 'Italy',
     FR: 'France',
     NL: 'Netherlands',
+    UKR: 'Ukraine',
   },
   uk: {
     GB: 'Англія',
@@ -138,6 +141,7 @@ export const countryNames: Record<Language, Record<string, string>> = {
     IT: 'Італія',
     FR: 'Франція',
     NL: 'Нідерланди',
+    UKR: 'Україна',
   },
 }
 
@@ -261,4 +265,24 @@ export const teamNamesUk: Record<string, string> = {
   '28': 'Уніон Берлін',
   '16': 'Аугсбург',
   '6': 'Бохум',
+}
+
+// openfootapi Ukrainian Premier League team name -> Ukrainian name (Cyrillic).
+export const teamNamesUkByName: Record<string, string> = {
+  'Polissya Zhytomyr': 'Полісся Житомир',
+  'Shakhtar Donetsk': 'Шахтар Донецьк',
+  'Dynamo Kyiv': 'Динамо Київ',
+  'FC Kharkiv': 'ФК Харків',
+  'Karpaty': 'Карпати',
+  'Zorya': 'Зоря',
+  'LNZ Cherkasy': 'ЛНЗ Черкаси',
+  'FC Kolos Kovalivka': 'Колос Ковалівка',
+  'Livyi Bereh': 'Лівий Берег',
+  'Chornomorets Odesa': 'Чорноморець Одеса',
+  'Epitsentr Kamianets-Podilskyi': "Епіцентр Кам'янець-Подільський",
+  'Bukovyna Chernivtsi': 'Буковина Чернівці',
+  'Veres Rivne': 'Верес Рівне',
+  'Obolon Kyiv': 'Оболонь Київ',
+  'Kryvbas': 'Кривбас',
+  'Kudrivka': 'Кудрівка',
 }
