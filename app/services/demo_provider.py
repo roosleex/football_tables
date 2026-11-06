@@ -6,6 +6,8 @@ The squad lists below are illustrative and are replaced by live data as soon as
 
 import random
 
+from app.core.leagues import DEFAULT_LEAGUES
+from app.models.league import League
 from app.models.standings import StandingsData, StandingRow, Team
 from app.services.base import StandingsProvider
 
@@ -78,6 +80,9 @@ class DemoProvider:
     def get_team_form(self, league_code: str) -> dict[int, str]:
         # Demo standings already include a generated form on each row.
         return {}
+
+    def get_leagues(self) -> list[League]:
+        return list(DEFAULT_LEAGUES)
 
 
 def _generate_table(league_code: str, team_names: list[str]) -> list[StandingRow]:

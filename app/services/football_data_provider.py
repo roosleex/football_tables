@@ -7,9 +7,21 @@ from typing import Any
 import httpx
 
 from app.core.config import Settings
+from app.models.league import League
 from app.models.standings import StandingsData, StandingRow, Team
 from app.services.base import ProviderError, StandingsProvider
 from app.services.rate_limiter import RequestQueue
+
+# European country codes (football-data.org ``area.code`` values).
+_EUROPEAN_CODES: frozenset[str] = frozenset({
+    "ALB", "AND", "ARM", "AUT", "AZE", "BLR", "BEL", "BIH", "BGR",
+    "HRV", "CYP", "CZE", "DNK", "ENG", "EST", "FRO", "FIN", "FRA",
+    "GEO", "DEU", "GIB", "GRC", "HUN", "ISL", "IRL", "ISR", "ITA",
+    "KAZ", "KOS", "LVA", "LIE", "LTU", "LUX", "MLT", "MDA", "MCO",
+    "MNE", "NLD", "MKD", "NIR", "NOR", "POL", "POR", "ROU", "RUS",
+    "SMR", "SCO", "SRB", "SVK", "SVN", "ESP", "SWE", "CHE", "TUR",
+    "UKR", "WAL", "GBR",
+})
 
 
 class FootballDataProvider:
@@ -59,6 +71,30 @@ class FootballDataProvider:
             params={"status": "FINISHED"},
         )
         return _compute_form(payload.get("matches") or [])
+
+    def get_leagues(self) -> list[League]:
+        """Return the top European league competitions available to this key."""
+        payload = self._get("/competitions")
+        leagues: list[League] = []
+        for comp in payload.get("competitions") or []:
+            if comp.get("type") != "LEAGUE":
+                continue
+            area = comp.get("area") or {}
+            if area.get("code") not in _EUROPEAN_CODES:
+                continue
+            if comp.get("code") in self._settings.excluded_league_codes:
+                continue
+            leagues.append(
+                League(
+                    code=comp.get("code") or "",
+                    name=comp.get("name") or (comp.get("code") or ""),
+                    country=area.get("name") or "",
+                    country_code=area.get("code") or "",
+                    emblem=comp.get("emblem"),
+                )
+            )
+        leagues.sort(key=lambda league: league.name)
+        return leagues
 
 
 def _compute_form(matches: list[dict[str, Any]]) -> dict[int, str]:

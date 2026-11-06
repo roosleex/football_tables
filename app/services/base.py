@@ -2,6 +2,7 @@
 
 from typing import Protocol
 
+from app.models.league import League
 from app.models.standings import StandingsData
 
 
@@ -24,6 +25,10 @@ class StandingsProvider(Protocol):
 
     def get_standings(self, league_code: str) -> StandingsData:
         """Return the ordered standings table for a league."""
+        ...
+
+    def get_leagues(self) -> list[League]:
+        """Return the leagues available from this provider."""
         ...
 
     def get_team_form(self, league_code: str) -> dict[int, str]:

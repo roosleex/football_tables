@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from fastapi import Request
 
-from app.core.leagues import LEAGUES, LEAGUES_BY_CODE
+from app.core.leagues import LeagueCatalog
 from app.db.sqlite import StandingsRepository
 from app.models.league import League
 from app.models.standings import LeagueStandings
@@ -12,14 +12,15 @@ from app.services.base import LeagueNotFoundError, StandingsNotAvailableError
 
 
 class StandingsService:
-    def __init__(self, repository: StandingsRepository) -> None:
+    def __init__(self, repository: StandingsRepository, catalog: LeagueCatalog) -> None:
         self._repository = repository
+        self._catalog = catalog
 
     def list_leagues(self) -> list[League]:
-        return list(LEAGUES)
+        return self._catalog.all()
 
     def get_standings(self, league_code: str) -> LeagueStandings:
-        league = LEAGUES_BY_CODE.get(league_code.upper())
+        league = self._catalog.get(league_code)
         if league is None:
             raise LeagueNotFoundError(league_code)
 

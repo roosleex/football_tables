@@ -31,6 +31,21 @@ Also set teams names depends on current app language
 
 ----------
 
+Add to the menu standings of all top European leagues, except second leagues, that available on football-data.org
+
+----------
+
+Add another API to the app
+https://openfootapi.com/
+Add to the menu standings of all European leagues that available on
+openfootapi.com and absent on football-data.org.
+Find out max requests per minute on openfootapi.com
+and set FOOTAPI_MAX_REQUESTS_PER_MINUTE=??? param in .env
+and do requests to openfootapi.com according to FOOTAPI_MAX_REQUESTS_PER_MINUTE
+
+
+----------
+
 
 
 

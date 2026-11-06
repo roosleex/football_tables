@@ -1,12 +1,13 @@
-"""Catalog of supported leagues.
+"""Catalog of supported leagues."""
 
-``code`` matches football-data.org competition codes so live data can be
-dropped in without changing the public API.
-"""
+from __future__ import annotations
+
+import threading
 
 from app.models.league import League
 
-LEAGUES: list[League] = [
+# Fallback catalog used in demo mode (no football-data.org API key).
+DEFAULT_LEAGUES: list[League] = [
     League(code="PL", name="Premier League", country="England", country_code="GB"),
     League(code="PD", name="La Liga", country="Spain", country_code="ES"),
     League(code="BL1", name="Bundesliga", country="Germany", country_code="DE"),
@@ -15,4 +16,25 @@ LEAGUES: list[League] = [
     League(code="DED", name="Eredivisie", country="Netherlands", country_code="NL"),
 ]
 
-LEAGUES_BY_CODE: dict[str, League] = {league.code: league for league in LEAGUES}
+
+class LeagueCatalog:
+    """A mutable, thread-safe list of leagues with a code lookup."""
+
+    def __init__(self, leagues: list[League] | None = None) -> None:
+        self._lock = threading.Lock()
+        self._leagues: list[League] = []
+        self._by_code: dict[str, League] = {}
+        self.replace(leagues or [])
+
+    def replace(self, leagues: list[League]) -> None:
+        with self._lock:
+            self._leagues = list(leagues)
+            self._by_code = {league.code.upper(): league for league in self._leagues}
+
+    def all(self) -> list[League]:
+        with self._lock:
+            return list(self._leagues)
+
+    def get(self, code: str) -> League | None:
+        with self._lock:
+            return self._by_code.get(code.upper())

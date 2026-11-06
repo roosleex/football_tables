@@ -38,6 +38,10 @@ class Settings(BaseSettings):
     # Maximum football-data.org requests per minute (free tier: 10).
     max_requests_per_minute: int = 10
 
+    # Competition codes to hide from the menu — second divisions, e.g. "ELC"
+    # (Championship), "BL2" (2. Bundesliga), "SB" (Serie B), "FL2" (Ligue 2).
+    excluded_league_codes: list[str] = ["ELC"]
+
     cors_origins: list[str] = [
         "http://localhost:5173",
         "http://127.0.0.1:5173",

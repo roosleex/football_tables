@@ -10,7 +10,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app import __version__
 from app.api.routes import router as api_router
 from app.core.config import Settings, get_settings
-from app.core.leagues import LEAGUES
+from app.core.leagues import DEFAULT_LEAGUES, LeagueCatalog
 from app.db.sqlite import StandingsRepository
 from app.services.base import StandingsProvider
 from app.services.demo_provider import DemoProvider
@@ -34,19 +34,25 @@ def create_app() -> FastAPI:
         repository.init_schema()
 
         provider = build_provider(settings)
+        catalog = LeagueCatalog(DEFAULT_LEAGUES)
         scheduler = RefreshScheduler(
             provider,
             repository,
-            leagues=list(LEAGUES),
+            catalog,
             interval_seconds=settings.refresh_interval_seconds,
             form_interval_seconds=settings.form_refresh_interval_seconds,
         )
 
-        # Load standings once before serving so users immediately get data.
-        # Form is computed by the background thread (may take a little longer).
-        scheduler.refresh_standings()
+        # Populate the league catalog before serving (fast: demo is instant, live
+        # is a couple of list requests). Standings are fetched in the background.
+        scheduler.refresh_leagues()
 
-        app.state.standings_service = StandingsService(repository)
+        # In demo mode (no network) also load standings synchronously so the API
+        # is immediately ready and tests are deterministic.
+        if provider.source == "demo":
+            scheduler.refresh_standings()
+
+        app.state.standings_service = StandingsService(repository, catalog)
 
         thread = scheduler.start()
         try:
