@@ -1,0 +1,295 @@
+:root {
+  --bg: #0f172a;
+  --bg-sidebar: #0b1120;
+  --bg-panel: #1e293b;
+  --border: #2b3a52;
+  --text: #e2e8f0;
+  --text-muted: #94a3b8;
+  --accent: #38bdf8;
+  --green: #22c55e;
+  --blue: #3b82f6;
+  --red: #ef4444;
+  --gold: #f59e0b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.app {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  background: var(--bg-sidebar);
+  border-right: 1px solid var(--border);
+  padding: 16px 12px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px 20px;
+}
+
+.brand-ball {
+  font-size: 24px;
+}
+
+.brand-title {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.league-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.league-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 12px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  color: var(--text);
+  cursor: pointer;
+  font-size: 14px;
+  text-align: left;
+  transition: background 0.15s;
+}
+
+.league-item:hover {
+  background: #16233c;
+}
+
+.league-item.active {
+  background: #1d3a5f;
+  border-color: #2b4a72;
+}
+
+.league-name {
+  font-weight: 600;
+  flex: 1;
+}
+
+.league-country {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.flag {
+  font-size: 18px;
+}
+
+.content {
+  flex: 1;
+  padding: 24px 32px;
+  overflow-x: auto;
+}
+
+.standings-panel {
+  max-width: 1000px;
+}
+
+.standings-header h1 {
+  margin: 0 0 4px;
+}
+
+.muted {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.error {
+  color: var(--red);
+}
+
+.source-badge {
+  margin-left: 10px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  vertical-align: middle;
+}
+
+.source-live {
+  background: #14532d;
+  color: #86efac;
+}
+
+.source-demo {
+  background: #78350f;
+  color: #fdba74;
+}
+
+.table-wrap {
+  margin-top: 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.standings-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.standings-table th,
+.standings-table td {
+  padding: 10px 12px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.standings-table thead th {
+  background: var(--bg-panel);
+  color: var(--text-muted);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  border-bottom: 1px solid var(--border);
+}
+
+.standings-table tbody tr {
+  border-bottom: 1px solid var(--border);
+}
+
+.standings-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.standings-table tbody tr:hover {
+  background: #0d1a2c;
+}
+
+.col-pos {
+  width: 40px;
+  font-weight: 700;
+}
+
+.col-team {
+  text-align: left;
+  min-width: 220px;
+}
+
+.col-form {
+  text-align: center;
+}
+
+.team-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.crest {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.crest-fallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #334155;
+  color: var(--text);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.team-name {
+  font-weight: 600;
+}
+
+.positive {
+  color: var(--green);
+}
+
+.negative {
+  color: var(--red);
+}
+
+.points {
+  font-weight: 700;
+}
+
+.standings-table tbody tr.zone-champions-league td:first-child {
+  border-left: 3px solid var(--blue);
+}
+
+.standings-table tbody tr.zone-europa td:first-child {
+  border-left: 3px solid var(--gold);
+}
+
+.standings-table tbody tr.zone-relegation td:first-child {
+  border-left: 3px solid var(--red);
+}
+
+.form-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  margin: 0 1px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.form-w {
+  background: #14532d;
+  color: #bbf7d0;
+}
+
+.form-d {
+  background: #374151;
+  color: #d1d5db;
+}
+
+.form-l {
+  background: #7f1d1d;
+  color: #fecaca;
+}
+
+@media (max-width: 720px) {
+  .app {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+
+  .league-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .league-item {
+    width: auto;
+  }
+}

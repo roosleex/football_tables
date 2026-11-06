@@ -1,17 +1,23 @@
 [project]
 name = "football-tables"
 version = "0.1.0"
-description = "Add your description here"
+description = "Standings for major European football leagues (FastAPI + React)"
 readme = "README.md"
 authors = [
-    { name = "roosleex", email = "roosleex@gmail.com" }
+    { name = "roosleex", email = "roosleex@gmail.com" },
 ]
 requires-python = ">=3.14"
-dependencies = []
+dependencies = [
+    "fastapi>=0.115.0",
+    "httpx>=0.28.1",
+    "pydantic-settings>=2.7.0",
+    "uvicorn[standard]>=0.34.0",
+]
 
-[project.scripts]
-football-tables = "football_tables:main"
+[dependency-groups]
+dev = [
+    "pytest>=8.3.0",
+]
 
-[build-system]
-requires = ["uv_build>=0.12.5,<0.13.0"]
-build-backend = "uv_build"
+[tool.pytest.ini_options]
+pythonpath = ["."]
