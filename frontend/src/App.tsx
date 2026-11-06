@@ -3,6 +3,7 @@ import type { League, LeagueStandings } from './types'
 import { fetchLeagues, fetchStandings } from './api/client'
 import { LeagueList } from './components/LeagueList'
 import { StandingsTable } from './components/StandingsTable'
+import { TopThreeBoard } from './components/TopThreeBoard'
 import { LanguageSelector } from './components/LanguageSelector'
 import { useLanguage } from './i18n/LanguageContext'
 
@@ -19,10 +20,7 @@ export default function App() {
 
   useEffect(() => {
     fetchLeagues()
-      .then((data) => {
-        setLeagues(data)
-        if (data.length > 0) setSelectedCode(data[0].code)
-      })
+      .then((data) => setLeagues(data))
       .catch(() => setError('loadError'))
   }, [])
 
@@ -53,13 +51,25 @@ export default function App() {
     }
   }, [selectedCode])
 
+  const goHome = () => {
+    setSelectedCode(null)
+    setStandings(null)
+    setError(null)
+    setLoading(false)
+  }
+
   return (
     <div className="app">
       <header className="topbar">
-        <div className="brand">
+        <button
+          type="button"
+          className="brand"
+          onClick={goHome}
+          aria-label={t('appTitle')}
+        >
           <span className="brand-ball">⚽</span>
           <span className="brand-title">{t('appTitle')}</span>
-        </div>
+        </button>
         <LanguageSelector />
       </header>
       <div className="body">
@@ -71,13 +81,20 @@ export default function App() {
           />
         </aside>
         <main className="content">
-          {loading && !standings && <p className="muted">{t('loading')}</p>}
-          {error && <p className="error">{t(error)}</p>}
-          {standings && (
-            <StandingsTable standings={standings} lastUpdated={lastUpdated} />
-          )}
-          {!loading && !error && !standings && (
-            <p className="muted">{t('selectHint')}</p>
+          {error === 'loadError' ? (
+            <p className="error">{t('loadError')}</p>
+          ) : selectedCode ? (
+            <>
+              {loading && !standings && <p className="muted">{t('loading')}</p>}
+              {error === 'standingsError' && (
+                <p className="error">{t('standingsError')}</p>
+              )}
+              {standings && (
+                <StandingsTable standings={standings} lastUpdated={lastUpdated} />
+              )}
+            </>
+          ) : (
+            <TopThreeBoard leagues={leagues} />
           )}
         </main>
       </div>

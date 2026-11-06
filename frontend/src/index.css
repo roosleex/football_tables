@@ -46,8 +46,7 @@ body {
 }
 
 .sidebar {
-  width: 260px;
-  flex-shrink: 0;
+  flex: 0 0 25%;
   background: var(--bg-sidebar);
   border-right: 1px solid var(--border);
   padding: 16px 12px;
@@ -57,6 +56,17 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+}
+
+.brand:hover {
+  opacity: 0.85;
 }
 
 .brand-ball {
@@ -128,9 +138,105 @@ body {
 }
 
 .content {
-  flex: 1;
+  flex: 0 0 75%;
   padding: 24px 32px;
   overflow-x: auto;
+}
+
+.top-three-board {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.top-three-card {
+  flex: 1 1 220px;
+  min-width: 180px;
+  max-width: 300px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+
+.top-three-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.top-three-league {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.top-three-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.top-three-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.top-three-pos {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  background: #334155;
+  color: var(--text);
+}
+
+.top-three-item-1 .top-three-pos {
+  background: var(--gold);
+  color: #0f172a;
+}
+
+.top-three-item-2 .top-three-pos {
+  background: #cbd5e1;
+  color: #0f172a;
+}
+
+.top-three-item-3 .top-three-pos {
+  background: #b45309;
+  color: #fff7ed;
+}
+
+.top-three-team {
+  flex: 1;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.top-three-points {
+  font-weight: 700;
+  color: var(--accent);
+  min-width: 22px;
+  text-align: right;
+}
+
+.top-three-empty {
+  margin: 2px 0 0;
+  color: var(--text-muted);
+  font-size: 13px;
 }
 
 .standings-panel {
@@ -317,6 +423,12 @@ body {
   }
 
   .sidebar {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+
+  .content {
+    flex: 0 0 auto;
     width: 100%;
   }
 

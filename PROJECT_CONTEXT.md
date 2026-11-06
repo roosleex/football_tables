@@ -45,6 +45,14 @@ OPENFOOT_API_KEY
 
 ----------
 
+Add on the main page flexbox with items where every item contains every league top 3 team names and theirs points.
+When I enter the main page I want see main menu with all leagues items on the left of the page with 25% of total width and flexbox with items on the right
+of the page with 75% of total width. 
+No table on the main page, only flexbox with items where every item contains every league top 3 team names and theirs points.
+Then when I click on the menu item 75% right part will show me specified league full table. When I click on the top left brand section I will go to the main page
+
+----------
+
 
 
 
