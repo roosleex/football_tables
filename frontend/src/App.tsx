@@ -3,15 +3,18 @@ import type { League, LeagueStandings } from './types'
 import { fetchLeagues, fetchStandings } from './api/client'
 import { LeagueList } from './components/LeagueList'
 import { StandingsTable } from './components/StandingsTable'
+import { LanguageSelector } from './components/LanguageSelector'
+import { useLanguage } from './i18n/LanguageContext'
 
 const REFRESH_INTERVAL_MS = 60_000 // refresh standings every minute
 
 export default function App() {
+  const { t } = useLanguage()
   const [leagues, setLeagues] = useState<League[]>([])
   const [selectedCode, setSelectedCode] = useState<string | null>(null)
   const [standings, setStandings] = useState<LeagueStandings | null>(null)
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
+  const [error, setError] = useState<'loadError' | 'standingsError' | null>(null)
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null)
 
   useEffect(() => {
@@ -20,7 +23,7 @@ export default function App() {
         setLeagues(data)
         if (data.length > 0) setSelectedCode(data[0].code)
       })
-      .catch(() => setError('Could not load leagues. Is the backend running?'))
+      .catch(() => setError('loadError'))
   }, [])
 
   useEffect(() => {
@@ -36,7 +39,7 @@ export default function App() {
         setStandings(data)
         setLastUpdated(new Date())
       } catch {
-        if (active) setError('Could not load standings.')
+        if (active) setError('standingsError')
       } finally {
         if (active) setLoading(false)
       }
@@ -52,27 +55,32 @@ export default function App() {
 
   return (
     <div className="app">
-      <aside className="sidebar">
+      <header className="topbar">
         <div className="brand">
           <span className="brand-ball">⚽</span>
-          <span className="brand-title">Football Tables</span>
+          <span className="brand-title">{t('appTitle')}</span>
         </div>
-        <LeagueList
-          leagues={leagues}
-          selectedCode={selectedCode ?? ''}
-          onSelect={setSelectedCode}
-        />
-      </aside>
-      <main className="content">
-        {loading && !standings && <p className="muted">Loading…</p>}
-        {error && <p className="error">{error}</p>}
-        {standings && (
-          <StandingsTable standings={standings} lastUpdated={lastUpdated} />
-        )}
-        {!loading && !error && !standings && (
-          <p className="muted">Select a league to begin.</p>
-        )}
-      </main>
+        <LanguageSelector />
+      </header>
+      <div className="body">
+        <aside className="sidebar">
+          <LeagueList
+            leagues={leagues}
+            selectedCode={selectedCode ?? ''}
+            onSelect={setSelectedCode}
+          />
+        </aside>
+        <main className="content">
+          {loading && !standings && <p className="muted">{t('loading')}</p>}
+          {error && <p className="error">{t(error)}</p>}
+          {standings && (
+            <StandingsTable standings={standings} lastUpdated={lastUpdated} />
+          )}
+          {!loading && !error && !standings && (
+            <p className="muted">{t('selectHint')}</p>
+          )}
+        </main>
+      </div>
     </div>
   )
 }

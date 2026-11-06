@@ -24,6 +24,13 @@ considering  MAX_REQUESTS_PER_MINUTE setting and do requests every minute not gr
 
 ----------
 
+Add to the top of the app page the select for language changing
+Add two languages for the app
+English and Ukrainian
+Also set teams names depends on current app language
+
+----------
+
 
 
 

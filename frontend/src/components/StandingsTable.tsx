@@ -1,4 +1,5 @@
 import type { LeagueStandings } from '../types'
+import { useLanguage } from '../i18n/LanguageContext'
 
 interface StandingsTableProps {
   standings: LeagueStandings
@@ -22,14 +23,17 @@ function initials(name: string): string {
     .toUpperCase()
 }
 
-function formBadges(form?: string | null) {
+function formBadges(
+  form: string | null | undefined,
+  label: (result: string) => string,
+) {
   if (!form) return null
   return form
     .split(',')
     .slice(0, 5)
     .map((result, i) => (
       <span key={i} className={`form-badge form-${result.toLowerCase()}`}>
-        {result}
+        {label(result)}
       </span>
     ))
 }
@@ -46,23 +50,34 @@ function formatDateTime(date: Date): string {
 }
 
 export function StandingsTable({ standings, lastUpdated }: StandingsTableProps) {
+  const { t, leagueName, teamName } = useLanguage()
   const total = standings.table.length
   const updatedAt = standings.updated_at
     ? new Date(standings.updated_at)
     : lastUpdated
+
+  const resultLabel = (result: string): string => {
+    if (result === 'W') return t('formWin')
+    if (result === 'D') return t('formDraw')
+    if (result === 'L') return t('formLoss')
+    return result
+  }
+
   return (
     <div className="standings-panel">
       <header className="standings-header">
-        <h1>{standings.league.name}</h1>
+        <h1>{leagueName(standings.league.code)}</h1>
         <p className="muted">
-          {standings.season ? `${standings.season} season` : 'Current season'}
+          {standings.season
+            ? t('season', { season: standings.season })
+            : t('currentSeason')}
           <span className={`source-badge source-${standings.source}`}>
-            {standings.source}
+            {t(standings.source as 'live' | 'demo')}
           </span>
         </p>
         {updatedAt && (
-          <p className="updated-at" title="When the standings were last refreshed">
-            Last updated: {formatDateTime(updatedAt)}
+          <p className="updated-at">
+            {t('lastUpdated')}: {formatDateTime(updatedAt)}
           </p>
         )}
       </header>
@@ -71,16 +86,16 @@ export function StandingsTable({ standings, lastUpdated }: StandingsTableProps) 
           <thead>
             <tr>
               <th className="col-pos">#</th>
-              <th className="col-team">Team</th>
-              <th title="Played">P</th>
-              <th title="Won">W</th>
-              <th title="Drawn">D</th>
-              <th title="Lost">L</th>
-              <th title="Goals for">GF</th>
-              <th title="Goals against">GA</th>
-              <th title="Goal difference">GD</th>
-              <th title="Points">Pts</th>
-              <th className="col-form">Form</th>
+              <th className="col-team">{t('team')}</th>
+              <th title={t('playedFull')}>{t('played')}</th>
+              <th title={t('wonFull')}>{t('won')}</th>
+              <th title={t('drawnFull')}>{t('drawn')}</th>
+              <th title={t('lostFull')}>{t('lost')}</th>
+              <th title={t('goalsForFull')}>{t('goalsFor')}</th>
+              <th title={t('goalsAgainstFull')}>{t('goalsAgainst')}</th>
+              <th title={t('goalDifferenceFull')}>{t('goalDifference')}</th>
+              <th title={t('pointsFull')}>{t('points')}</th>
+              <th className="col-form">{t('form')}</th>
             </tr>
           </thead>
           <tbody>
@@ -104,9 +119,7 @@ export function StandingsTable({ standings, lastUpdated }: StandingsTableProps) 
                         {row.team.tla || initials(row.team.name)}
                       </span>
                     )}
-                    <span className="team-name">
-                      {row.team.short_name || row.team.name}
-                    </span>
+                    <span className="team-name">{teamName(row.team)}</span>
                   </span>
                 </td>
                 <td>{row.played}</td>
@@ -129,7 +142,7 @@ export function StandingsTable({ standings, lastUpdated }: StandingsTableProps) 
                     : row.goal_difference}
                 </td>
                 <td className="points">{row.points}</td>
-                <td className="col-form">{formBadges(row.form)}</td>
+                <td className="col-form">{formBadges(row.form, resultLabel)}</td>
               </tr>
             ))}
           </tbody>
