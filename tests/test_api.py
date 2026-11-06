@@ -1,21 +1,26 @@
-"""API smoke tests using the deterministic demo provider."""
+"""API smoke tests using the deterministic demo provider and SQLite storage."""
 
+import pytest
 from fastapi.testclient import TestClient
 
 from app.main import app
 
-client = TestClient(app)
+
+@pytest.fixture()
+def client():
+    with TestClient(app) as test_client:
+        yield test_client
 
 
-def test_health() -> None:
+def test_health(client) -> None:
     response = client.get("/api/health")
     assert response.status_code == 200
     body = response.json()
     assert body["status"] == "ok"
-    assert body["data_source"] in {"demo", "live"}
+    assert body["data_source"] == "demo"
 
 
-def test_list_leagues() -> None:
+def test_list_leagues(client) -> None:
     response = client.get("/api/leagues")
     assert response.status_code == 200
     leagues = response.json()
@@ -25,7 +30,7 @@ def test_list_leagues() -> None:
     }
 
 
-def test_get_standings_demo() -> None:
+def test_get_standings_demo(client) -> None:
     response = client.get("/api/leagues/PL/standings")
     assert response.status_code == 200
     body = response.json()
@@ -34,8 +39,9 @@ def test_get_standings_demo() -> None:
     assert len(body["table"]) == 20
     assert [row["position"] for row in body["table"]] == list(range(1, 21))
     assert body["table"][0]["points"] >= body["table"][-1]["points"]
+    assert body["updated_at"] is not None
 
 
-def test_unknown_league_returns_404() -> None:
+def test_unknown_league_returns_404(client) -> None:
     response = client.get("/api/leagues/XX/standings")
     assert response.status_code == 404

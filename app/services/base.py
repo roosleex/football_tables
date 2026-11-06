@@ -13,6 +13,10 @@ class ProviderError(Exception):
     """Raised when a data provider cannot fulfil a request."""
 
 
+class StandingsNotAvailableError(Exception):
+    """Raised when standings have not been loaded into storage yet."""
+
+
 class StandingsProvider(Protocol):
     """Interface implemented by all standings data providers."""
 
@@ -20,4 +24,8 @@ class StandingsProvider(Protocol):
 
     def get_standings(self, league_code: str) -> StandingsData:
         """Return the ordered standings table for a league."""
+        ...
+
+    def get_team_form(self, league_code: str) -> dict[int, str]:
+        """Return {team_id: 'W,D,W,L,W'} of recent results (live providers)."""
         ...

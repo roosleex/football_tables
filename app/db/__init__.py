@@ -1,1 +1,1 @@
-"""Persistence helpers (currently a small in-memory cache)."""
+"""Persistence helpers (SQLite storage of standings snapshots)."""

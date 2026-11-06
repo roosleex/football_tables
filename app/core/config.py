@@ -1,8 +1,11 @@
 """Application configuration, loaded from environment variables or a ``.env`` file."""
 
 from functools import lru_cache
+from pathlib import Path
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 
 class Settings(BaseSettings):
@@ -23,8 +26,17 @@ class Settings(BaseSettings):
     football_data_base_url: str = "https://api.football-data.org/v4"
     http_timeout_seconds: float = 10.0
 
-    # Live standings are cached to stay within football-data.org rate limits.
-    standings_cache_ttl_seconds: int = 300
+    # SQLite storage: a snapshot of all standings, written by the refresh task.
+    database_path: str = str(PROJECT_ROOT / "football_tables.db")
+
+    # How often the background task re-fetches and persists standings.
+    refresh_interval_seconds: int = 60
+
+    # Form changes slowly, so refresh it less often than standings.
+    form_refresh_interval_seconds: int = 600
+
+    # Maximum football-data.org requests per minute (free tier: 10).
+    max_requests_per_minute: int = 10
 
     cors_origins: list[str] = [
         "http://localhost:5173",

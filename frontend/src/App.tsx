@@ -4,12 +4,15 @@ import { fetchLeagues, fetchStandings } from './api/client'
 import { LeagueList } from './components/LeagueList'
 import { StandingsTable } from './components/StandingsTable'
 
+const REFRESH_INTERVAL_MS = 60_000 // refresh standings every minute
+
 export default function App() {
   const [leagues, setLeagues] = useState<League[]>([])
   const [selectedCode, setSelectedCode] = useState<string | null>(null)
   const [standings, setStandings] = useState<LeagueStandings | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [lastUpdated, setLastUpdated] = useState<Date | null>(null)
 
   useEffect(() => {
     fetchLeagues()
@@ -25,18 +28,25 @@ export default function App() {
     let active = true
     setLoading(true)
     setError(null)
-    fetchStandings(selectedCode)
-      .then((data) => {
-        if (active) setStandings(data)
-      })
-      .catch(() => {
+
+    const load = async () => {
+      try {
+        const data = await fetchStandings(selectedCode)
+        if (!active) return
+        setStandings(data)
+        setLastUpdated(new Date())
+      } catch {
         if (active) setError('Could not load standings.')
-      })
-      .finally(() => {
+      } finally {
         if (active) setLoading(false)
-      })
+      }
+    }
+
+    load()
+    const interval = window.setInterval(load, REFRESH_INTERVAL_MS)
     return () => {
       active = false
+      window.clearInterval(interval)
     }
   }, [selectedCode])
 
@@ -54,9 +64,11 @@ export default function App() {
         />
       </aside>
       <main className="content">
-        {loading && <p className="muted">Loading…</p>}
+        {loading && !standings && <p className="muted">Loading…</p>}
         {error && <p className="error">{error}</p>}
-        {!loading && !error && standings && <StandingsTable standings={standings} />}
+        {standings && (
+          <StandingsTable standings={standings} lastUpdated={lastUpdated} />
+        )}
         {!loading && !error && !standings && (
           <p className="muted">Select a league to begin.</p>
         )}

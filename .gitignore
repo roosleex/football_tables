@@ -13,6 +13,11 @@ wheels/
 # Environment variables
 .env
 
+# SQLite database
+*.db
+*.db-wal
+*.db-shm
+
 # Node / frontend
 node_modules/
 frontend/dist/

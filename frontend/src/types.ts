@@ -33,4 +33,5 @@ export interface LeagueStandings {
   table: StandingRow[]
   season?: string | null
   source: string
+  updated_at?: string | null
 }

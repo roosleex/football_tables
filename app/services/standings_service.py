@@ -1,29 +1,19 @@
-"""Application service that coordinates providers, caching and domain objects."""
+"""Application service that serves standings stored in SQLite."""
 
 from __future__ import annotations
 
-from app.core.config import Settings, get_settings
+from fastapi import Request
+
 from app.core.leagues import LEAGUES, LEAGUES_BY_CODE
-from app.db.cache import InMemoryCache
+from app.db.sqlite import StandingsRepository
 from app.models.league import League
-from app.models.standings import LeagueStandings, StandingsData
-from app.services.base import LeagueNotFoundError, StandingsProvider
-from app.services.demo_provider import DemoProvider
-from app.services.football_data_provider import FootballDataProvider
+from app.models.standings import LeagueStandings
+from app.services.base import LeagueNotFoundError, StandingsNotAvailableError
 
 
 class StandingsService:
-    def __init__(
-        self,
-        provider: StandingsProvider,
-        cache: InMemoryCache | None = None,
-    ) -> None:
-        self._provider = provider
-        self._cache = cache
-
-    @property
-    def source(self) -> str:
-        return self._provider.source
+    def __init__(self, repository: StandingsRepository) -> None:
+        self._repository = repository
 
     def list_leagues(self) -> list[League]:
         return list(LEAGUES)
@@ -33,41 +23,19 @@ class StandingsService:
         if league is None:
             raise LeagueNotFoundError(league_code)
 
-        data: StandingsData | None = None
-        if self._cache is not None:
-            data = self._cache.get(league.code)
-
-        if data is None:
-            data = self._provider.get_standings(league.code)
-            if self._cache is not None:
-                self._cache.set(league.code, data)
+        stored = self._repository.get_standings(league.code)
+        if stored is None:
+            raise StandingsNotAvailableError(league.code)
 
         return LeagueStandings(
             league=league,
-            table=data.table,
-            season=data.season,
-            source=self._provider.source,
+            table=stored.rows,
+            season=stored.season,
+            source=stored.source,
+            updated_at=stored.updated_at,
         )
 
 
-def build_standings_service(settings: Settings | None = None) -> StandingsService:
-    settings = settings or get_settings()
-
-    provider: StandingsProvider
-    if settings.football_data_api_key:
-        provider = FootballDataProvider(settings)
-    else:
-        provider = DemoProvider()
-
-    # Only live data needs caching (demo data is cheap and deterministic).
-    cache = (
-        InMemoryCache(ttl_seconds=settings.standings_cache_ttl_seconds)
-        if provider.source == "live"
-        else None
-    )
-    return StandingsService(provider, cache)
-
-
-def get_standings_service() -> StandingsService:
-    """FastAPI dependency factory."""
-    return build_standings_service()
+def get_standings_service(request: Request) -> StandingsService:
+    """FastAPI dependency that returns the app's configured service."""
+    return request.app.state.standings_service

@@ -75,6 +75,10 @@ class DemoProvider:
             table=_generate_table(league_code, team_names),
         )
 
+    def get_team_form(self, league_code: str) -> dict[int, str]:
+        # Demo standings already include a generated form on each row.
+        return {}
+
 
 def _generate_table(league_code: str, team_names: list[str]) -> list[StandingRow]:
     rng = random.Random(league_code)

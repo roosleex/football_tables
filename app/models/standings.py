@@ -41,3 +41,4 @@ class LeagueStandings(BaseModel):
     table: list[StandingRow]
     season: str | None = None
     source: str = "demo"
+    updated_at: str | None = None

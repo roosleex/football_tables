@@ -7,7 +7,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from app.core.config import get_settings
 from app.models.league import League
 from app.models.standings import LeagueStandings
-from app.services.base import LeagueNotFoundError, ProviderError
+from app.services.base import LeagueNotFoundError, StandingsNotAvailableError
 from app.services.standings_service import (
     StandingsService,
     get_standings_service,
@@ -46,8 +46,8 @@ def get_league_standings(
         return service.get_standings(league_code)
     except LeagueNotFoundError:
         raise HTTPException(status_code=404, detail=f"Unknown league: {league_code}")
-    except ProviderError as exc:
+    except StandingsNotAvailableError:
         raise HTTPException(
-            status_code=502,
-            detail=f"Upstream data provider error: {exc}",
+            status_code=503,
+            detail=f"Standings for {league_code} are not available yet. Please retry shortly.",
         )

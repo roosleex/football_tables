@@ -2,6 +2,7 @@ import type { LeagueStandings } from '../types'
 
 interface StandingsTableProps {
   standings: LeagueStandings
+  lastUpdated: Date | null
 }
 
 function zoneClass(position: number, total: number): string {
@@ -33,8 +34,22 @@ function formBadges(form?: string | null) {
     ))
 }
 
-export function StandingsTable({ standings }: StandingsTableProps) {
+function formatDateTime(date: Date): string {
+  return date.toLocaleString(undefined, {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+  })
+}
+
+export function StandingsTable({ standings, lastUpdated }: StandingsTableProps) {
   const total = standings.table.length
+  const updatedAt = standings.updated_at
+    ? new Date(standings.updated_at)
+    : lastUpdated
   return (
     <div className="standings-panel">
       <header className="standings-header">
@@ -45,6 +60,11 @@ export function StandingsTable({ standings }: StandingsTableProps) {
             {standings.source}
           </span>
         </p>
+        {updatedAt && (
+          <p className="updated-at" title="When the standings were last refreshed">
+            Last updated: {formatDateTime(updatedAt)}
+          </p>
+        )}
       </header>
       <div className="table-wrap">
         <table className="standings-table">
