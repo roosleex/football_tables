@@ -45,8 +45,10 @@ class Settings(BaseSettings):
     # openfootapi.com integration: a secondary standings source for leagues not
     # covered by football-data.org (the Ukrainian Premier League, the Belgian
     # Pro League, the Turkish Süper Lig, the Greek Super League, the Czech
-    # First League, the Polish Ekstraklasa, the Norwegian Eliteserien and the
-    # Danish Superliga). OPENFOOT_API_KEY authenticates requests;
+    # First League, the Polish Ekstraklasa, the Norwegian Eliteserien, the
+    # Danish Superliga, the Cypriot First Division, the Swiss Super League,
+    # the Austrian Bundesliga, the Nemzeti Bajnokság I and the Croatian
+    # Football League (HNL)). OPENFOOT_API_KEY authenticates requests;
     # FOOTAPI_MAX_REQUESTS_PER_MINUTE controls its per-minute request budget.
     openfoot_api_key: str | None = None
     openfoot_base_url: str = "https://openfootapi.com"

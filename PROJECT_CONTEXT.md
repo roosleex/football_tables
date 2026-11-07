@@ -119,6 +119,36 @@ Add Ukrainian language for Portugal teams names
 
 ----------
 
+Using https://openfootapi.com/ API
+add to the menu standings of Cyprus league.
+Add ukrainian language for newly added league.
+
+----------
+
+Using https://openfootapi.com/ API
+add to the menu standings of Switzerland league.
+Add ukrainian language for newly added league.
+
+----------
+
+Using https://openfootapi.com/ API
+add to the menu standings of Austria league.
+Add ukrainian language for newly added league.
+
+----------
+
+Using https://openfootapi.com/ API
+add to the menu standings of Hungary league.
+Add ukrainian language for newly added league.
+
+----------
+
+Using https://openfootapi.com/ API
+add to the menu standings of Croatia league.
+Add ukrainian language for newly added league.
+
+----------
+
 
 
 
