@@ -39,6 +39,12 @@ body {
   border-bottom: 1px solid var(--border);
 }
 
+.topbar-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .body {
   display: flex;
   flex: 1;
@@ -89,6 +95,24 @@ body {
 }
 
 .language-selector:focus {
+  outline: 1px solid var(--accent);
+}
+
+.reset-button {
+  background: var(--bg-panel);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.reset-button:hover {
+  background: #16233c;
+}
+
+.reset-button:focus-visible {
   outline: 1px solid var(--accent);
 }
 
@@ -153,10 +177,20 @@ body {
   flex: 1 1 220px;
   min-width: 180px;
   max-width: 300px;
+  position: relative;
   background: var(--bg-panel);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 12px 14px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.top-three-card:hover,
+.top-three-card:focus-visible {
+  background: #16233c;
+  border-color: #2b4a72;
+  outline: none;
 }
 
 .top-three-card-header {
@@ -164,6 +198,7 @@ body {
   align-items: center;
   gap: 8px;
   margin-bottom: 10px;
+  padding-right: 24px;
 }
 
 .top-three-league {
@@ -171,6 +206,32 @@ body {
   font-size: 14px;
   font-weight: 700;
   line-height: 1.2;
+}
+
+.top-three-close {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.top-three-close:hover,
+.top-three-close:focus-visible {
+  background: #334155;
+  color: var(--text);
+  outline: none;
 }
 
 .top-three-list {

@@ -1,6 +1,7 @@
 import {
   createContext,
   useContext,
+  useEffect,
   useMemo,
   useState,
   type ReactNode,
@@ -14,6 +15,7 @@ import {
   type Language,
   type Translation,
 } from './translations'
+import { getCookie, setCookie } from '../utils/cookies'
 
 interface LanguageContextValue {
   language: Language
@@ -30,8 +32,19 @@ interface LanguageContextValue {
 
 const LanguageContext = createContext<LanguageContextValue | null>(null)
 
+const LANGUAGE_COOKIE = 'language'
+
+function loadLanguage(): Language {
+  const stored = getCookie(LANGUAGE_COOKIE)
+  return stored === 'en' || stored === 'uk' ? stored : 'en'
+}
+
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>('en')
+  const [language, setLanguage] = useState<Language>(loadLanguage)
+
+  useEffect(() => {
+    setCookie(LANGUAGE_COOKIE, language)
+  }, [language])
 
   const value = useMemo<LanguageContextValue>(
     () => ({

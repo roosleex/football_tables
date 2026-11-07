@@ -95,6 +95,30 @@ Add ukrainian language for newly added league.
 
 ----------
 
+Output leagues in menu in order according to the current UEFA rankings country coefficients. The same order apply also to the flexbox with items where every item contains every league top 3 team names and theirs points.
+
+----------
+
+When a user click on a flexbox item go to the related league standings table
+
+----------
+
+Add to the app cookies for saving user state.
+Add to every flexbox item on the top right corner of an item cross sign for closing item. So user can close unnecessary flexbox items (boring leagues)
+and next time when he open the site he will see only his remained items.
+Use cookies to save such user state.
+Also add to the left of the button "Languages" new button called "Reset settings" when a user wants to turn back all leagues
+
+----------
+
+Also remember in cookies last active language
+
+----------
+
+Add Ukrainian language for Portugal teams names
+
+----------
+
 
 
 

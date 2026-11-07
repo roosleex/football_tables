@@ -6,8 +6,21 @@ import { StandingsTable } from './components/StandingsTable'
 import { TopThreeBoard } from './components/TopThreeBoard'
 import { LanguageSelector } from './components/LanguageSelector'
 import { useLanguage } from './i18n/LanguageContext'
+import { deleteCookie, getCookie, setCookie } from './utils/cookies'
 
 const REFRESH_INTERVAL_MS = 60_000 // refresh standings every minute
+const HIDDEN_LEAGUES_COOKIE = 'hidden_leagues'
+
+function loadHiddenLeagues(): Set<string> {
+  const raw = getCookie(HIDDEN_LEAGUES_COOKIE)
+  if (!raw) return new Set()
+  return new Set(
+    raw
+      .split(',')
+      .map((code) => code.trim())
+      .filter(Boolean),
+  )
+}
 
 export default function App() {
   const { t } = useLanguage()
@@ -17,6 +30,15 @@ export default function App() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<'loadError' | 'standingsError' | null>(null)
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null)
+  const [hiddenLeagues, setHiddenLeagues] = useState<Set<string>>(loadHiddenLeagues)
+
+  useEffect(() => {
+    if (hiddenLeagues.size === 0) {
+      deleteCookie(HIDDEN_LEAGUES_COOKIE)
+    } else {
+      setCookie(HIDDEN_LEAGUES_COOKIE, Array.from(hiddenLeagues).join(','))
+    }
+  }, [hiddenLeagues])
 
   useEffect(() => {
     fetchLeagues()
@@ -58,6 +80,18 @@ export default function App() {
     setLoading(false)
   }
 
+  const hideLeague = (code: string) => {
+    setHiddenLeagues((prev) => {
+      const next = new Set(prev)
+      next.add(code)
+      return next
+    })
+  }
+
+  const resetSettings = () => {
+    setHiddenLeagues(new Set())
+  }
+
   return (
     <div className="app">
       <header className="topbar">
@@ -70,7 +104,16 @@ export default function App() {
           <span className="brand-ball">⚽</span>
           <span className="brand-title">{t('appTitle')}</span>
         </button>
-        <LanguageSelector />
+        <div className="topbar-controls">
+          <button
+            type="button"
+            className="reset-button"
+            onClick={resetSettings}
+          >
+            {t('resetSettings')}
+          </button>
+          <LanguageSelector />
+        </div>
       </header>
       <div className="body">
         <aside className="sidebar">
@@ -94,7 +137,12 @@ export default function App() {
               )}
             </>
           ) : (
-            <TopThreeBoard leagues={leagues} />
+            <TopThreeBoard
+              leagues={leagues}
+              hiddenLeagues={hiddenLeagues}
+              onSelect={setSelectedCode}
+              onClose={hideLeague}
+            />
           )}
         </main>
       </div>

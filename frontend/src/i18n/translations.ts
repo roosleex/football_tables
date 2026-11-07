@@ -32,6 +32,8 @@ export interface Translation {
   formLoss: string
   live: string
   demo: string
+  resetSettings: string
+  closeLeague: string
 }
 
 export const translations: Record<Language, Translation> = {
@@ -67,6 +69,8 @@ export const translations: Record<Language, Translation> = {
     formLoss: 'L',
     live: 'live',
     demo: 'demo',
+    resetSettings: 'Reset settings',
+    closeLeague: 'Close league',
   },
   uk: {
     appTitle: 'Футбольні таблиці',
@@ -100,6 +104,8 @@ export const translations: Record<Language, Translation> = {
     formLoss: 'П',
     live: 'реальні',
     demo: 'демо',
+    resetSettings: 'Скинути налаштування',
+    closeLeague: 'Закрити лігу',
   },
 }
 
@@ -293,6 +299,25 @@ export const teamNamesUk: Record<string, string> = {
   '28': 'Уніон Берлін',
   '16': 'Аугсбург',
   '6': 'Бохум',
+  // Primeira Liga
+  '503': 'Порту',
+  '1903': 'Бенфіка',
+  '498': 'Спортінг',
+  '5530': 'Санта-Клара',
+  '5527': 'Академіку де Візеу',
+  '712': 'Арока',
+  '5533': 'Жил Вісенте',
+  '583': 'Морейренсе',
+  '5613': 'Брага',
+  '5531': 'Фамалікан',
+  '7822': 'Алверка',
+  '9136': 'Ештрела да Амадора',
+  '5543': 'Віторія Гімарайнш',
+  '5529': 'Насьйонал',
+  '5575': 'Марітіму',
+  '6618': 'Каза Піа',
+  '496': 'Ріо Аве',
+  '582': 'Ешторіл-Прая',
 }
 
 // openfootapi Ukrainian Premier League team name -> Ukrainian name (Cyrillic).

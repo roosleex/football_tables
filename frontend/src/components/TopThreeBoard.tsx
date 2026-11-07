@@ -6,6 +6,9 @@ import { useLanguage } from '../i18n/LanguageContext'
 
 interface TopThreeBoardProps {
   leagues: League[]
+  hiddenLeagues: Set<string>
+  onSelect: (code: string) => void
+  onClose: (code: string) => void
 }
 
 interface LeagueTopThree {
@@ -22,26 +25,63 @@ async function fetchTopThree(league: League): Promise<LeagueTopThree> {
   }
 }
 
-export function TopThreeBoard({ leagues }: TopThreeBoardProps) {
-  const { leagueName, teamName } = useLanguage()
+export function TopThreeBoard({
+  leagues,
+  hiddenLeagues,
+  onSelect,
+  onClose,
+}: TopThreeBoardProps) {
+  const { t, leagueName, teamName } = useLanguage()
   const [cards, setCards] = useState<LeagueTopThree[]>([])
 
   useEffect(() => {
+    const visibleLeagues = leagues.filter(
+      (league) => !hiddenLeagues.has(league.code),
+    )
     let active = true
-    Promise.all(leagues.map(fetchTopThree)).then((result) => {
+    Promise.all(visibleLeagues.map(fetchTopThree)).then((result) => {
       if (active) setCards(result)
     })
     return () => {
       active = false
     }
-  }, [leagues])
+  }, [leagues, hiddenLeagues])
 
-  if (cards.length === 0) return null
+  const visibleCards = cards.filter(
+    ({ league }) => !hiddenLeagues.has(league.code),
+  )
+
+  if (visibleCards.length === 0) return null
 
   return (
     <section className="top-three-board">
-      {cards.map(({ league, top }) => (
-        <article key={league.code} className="top-three-card">
+      {visibleCards.map(({ league, top }) => (
+        <article
+          key={league.code}
+          className="top-three-card"
+          role="button"
+          tabIndex={0}
+          onClick={() => onSelect(league.code)}
+          onKeyDown={(event) => {
+            if (event.target !== event.currentTarget) return
+            if (event.key === 'Enter' || event.key === ' ') {
+              event.preventDefault()
+              onSelect(league.code)
+            }
+          }}
+        >
+          <button
+            type="button"
+            className="top-three-close"
+            aria-label={t('closeLeague')}
+            title={t('closeLeague')}
+            onClick={(event) => {
+              event.stopPropagation()
+              onClose(league.code)
+            }}
+          >
+            ×
+          </button>
           <header className="top-three-card-header">
             <Flag countryCode={league.country_code} />
             <h2 className="top-three-league">{leagueName(league.code)}</h2>

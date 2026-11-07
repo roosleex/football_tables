@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from fastapi import Request
 
-from app.core.leagues import LeagueCatalog
+from app.core.leagues import LeagueCatalog, sort_leagues_by_uefa_coefficient
 from app.db.sqlite import StandingsRepository
 from app.models.league import League
 from app.models.standings import LeagueStandings
@@ -17,7 +17,7 @@ class StandingsService:
         self._catalog = catalog
 
     def list_leagues(self) -> list[League]:
-        return self._catalog.all()
+        return sort_leagues_by_uefa_coefficient(self._catalog.all())
 
     def get_standings(self, league_code: str) -> LeagueStandings:
         league = self._catalog.get(league_code)

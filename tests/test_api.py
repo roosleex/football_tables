@@ -30,6 +30,14 @@ def test_list_leagues(client) -> None:
     }
 
 
+def test_list_leagues_ordered_by_uefa_coefficient(client) -> None:
+    response = client.get("/api/leagues")
+    assert response.status_code == 200
+    assert [league["code"] for league in response.json()] == [
+        "PL", "SA", "PD", "BL1", "FL1", "DED",
+    ]
+
+
 def test_get_standings_demo(client) -> None:
     response = client.get("/api/leagues/PL/standings")
     assert response.status_code == 200
