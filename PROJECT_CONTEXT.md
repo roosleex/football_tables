@@ -77,6 +77,24 @@ Add ukrainian language for newly added league.
 
 ----------
 
+Using https://openfootapi.com/ API
+add to the menu standings of Poland league.
+Add ukrainian language for newly added league.
+
+----------
+
+Using https://openfootapi.com/ API
+add to the menu standings of Norway league.
+Add ukrainian language for newly added league.
+
+----------
+
+Using https://openfootapi.com/ API
+add to the menu standings of Denmark league.
+Add ukrainian language for newly added league.
+
+----------
+
 
 
 
