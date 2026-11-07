@@ -118,6 +118,7 @@ export const leagueNames: Record<Language, Record<string, string>> = {
     comp_czech_first_league_cze: 'Czech First League',
     comp_ekstraklasa_pol: 'Polish Ekstraklasa',
     comp_eliteserien_nor: 'Norwegian Eliteserien',
+    comp_superliga_dnk: 'Danish Superliga',
   },
   uk: {
     PL: "Прем'єр-ліга",
@@ -133,6 +134,7 @@ export const leagueNames: Record<Language, Record<string, string>> = {
     comp_czech_first_league_cze: 'Чеська Перша ліга',
     comp_ekstraklasa_pol: 'Польська Екстракляса',
     comp_eliteserien_nor: 'Норвезька Елітесеріен',
+    comp_superliga_dnk: 'Данська Суперліга',
   },
 }
 
@@ -151,6 +153,7 @@ export const countryNames: Record<Language, Record<string, string>> = {
     CZE: 'Czech Republic',
     POL: 'Poland',
     NOR: 'Norway',
+    DNK: 'Denmark',
   },
   uk: {
     GB: 'Англія',
@@ -166,6 +169,7 @@ export const countryNames: Record<Language, Record<string, string>> = {
     CZE: 'Чехія',
     POL: 'Польща',
     NOR: 'Норвегія',
+    DNK: 'Данія',
   },
 }
 
@@ -415,4 +419,17 @@ export const teamNamesUkByName: Record<string, string> = {
   'Aalesund': 'Олесунн',
   'Kristiansund': 'Кристіансунн',
   'Start': 'Старт',
+  // Danish Superliga
+  'Midtjylland': 'Мідтьюлланн',
+  'FC Copenhagen': 'Копенгаген',
+  'Viborg': 'Віборг',
+  'Brondby': 'Брондбю',
+  'Nordsjaelland': 'Нордшелланд',
+  'Odense': 'Оденсе',
+  'Horsens': 'Горсенс',
+  'Aarhus': 'Орхус',
+  'Silkeborg': 'Сількеборг',
+  'Randers FC': 'Раннерс',
+  'Lyngby': 'Люнгбю',
+  "Sonderjyske": "Сендер'юске",
 }
