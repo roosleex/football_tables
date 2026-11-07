@@ -113,6 +113,7 @@ export const leagueNames: Record<Language, Record<string, string>> = {
     DED: 'Eredivisie',
     comp_premier_league_ukr: 'Ukrainian Premier League',
     comp_pro_league_be: 'Belgian Pro League',
+    comp_super_lig_tr: 'Turkish Süper Lig',
   },
   uk: {
     PL: "Прем'єр-ліга",
@@ -123,6 +124,7 @@ export const leagueNames: Record<Language, Record<string, string>> = {
     DED: 'Ередивізі',
     comp_premier_league_ukr: "Українська Прем'єр-ліга",
     comp_pro_league_be: 'Бельгійська Про-ліга',
+    comp_super_lig_tr: 'Турецька Суперліга',
   },
 }
 
@@ -136,6 +138,7 @@ export const countryNames: Record<Language, Record<string, string>> = {
     NL: 'Netherlands',
     UKR: 'Ukraine',
     BEL: 'Belgium',
+    TUR: 'Turkey',
   },
   uk: {
     GB: 'Англія',
@@ -146,6 +149,7 @@ export const countryNames: Record<Language, Record<string, string>> = {
     NL: 'Нідерланди',
     UKR: 'Україна',
     BEL: 'Бельгія',
+    TUR: 'Туреччина',
   },
 }
 
@@ -308,4 +312,23 @@ export const teamNamesUkByName: Record<string, string> = {
   "RAAL La Louviere": "Ла-Лув'єр",
   'Cercle Brugge': 'Серкль Брюгге',
   'Kortrijk': 'Кортрейк',
+  // Turkish Süper Lig
+  'Galatasaray': 'Галатасарай',
+  'Amedspor': 'Амедспор',
+  'Trabzonspor': 'Трабзонспор',
+  'Besiktas': 'Бешикташ',
+  'Kasimpasa': 'Касимпаша',
+  'Fenerbahce': 'Фенербахче',
+  'Corum': 'Чорум',
+  'Kocaelispor': 'Коджаеліспор',
+  'Goztep': 'Гезтепе',
+  'Buyuksehyr': 'Бююкшехір',
+  'Erzurumspor': 'Ерзурумспор',
+  'Alanyaspor': 'Аланьяспор',
+  'Rizespor': 'Ризеспор',
+  'Genclerbirligi': 'Генчлербірлігі',
+  'Konyaspor': 'Коньяспор',
+  'Gaziantep': 'Газіантеп',
+  'Samsunspor': 'Самсунспор',
+  'Eyupspor': 'Еюпспор',
 }
