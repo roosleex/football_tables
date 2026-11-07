@@ -53,6 +53,12 @@ Then when I click on the menu item 75% right part will show me specified league 
 
 ----------
 
+Using https://openfootapi.com/ API
+add to the menu standings of Belgium league.
+Add ukrainian language for newly added league.
+
+----------
+
 
 
 

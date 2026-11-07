@@ -43,9 +43,9 @@ class Settings(BaseSettings):
     excluded_league_codes: list[str] = ["ELC"]
 
     # openfootapi.com integration: a secondary standings source for leagues not
-    # covered by football-data.org (currently the Ukrainian Premier League).
-    # OPENFOOT_API_KEY authenticates requests; FOOTAPI_MAX_REQUESTS_PER_MINUTE
-    # controls its per-minute request budget.
+    # covered by football-data.org (the Ukrainian Premier League and the Belgian
+    # Pro League). OPENFOOT_API_KEY authenticates requests;
+    # FOOTAPI_MAX_REQUESTS_PER_MINUTE controls its per-minute request budget.
     openfoot_api_key: str | None = None
     openfoot_base_url: str = "https://openfootapi.com"
     footapi_max_requests_per_minute: int = 60

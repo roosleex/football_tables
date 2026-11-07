@@ -112,6 +112,7 @@ export const leagueNames: Record<Language, Record<string, string>> = {
     FL1: 'Ligue 1',
     DED: 'Eredivisie',
     comp_premier_league_ukr: 'Ukrainian Premier League',
+    comp_pro_league_be: 'Belgian Pro League',
   },
   uk: {
     PL: "Прем'єр-ліга",
@@ -121,6 +122,7 @@ export const leagueNames: Record<Language, Record<string, string>> = {
     FL1: 'Ліга 1',
     DED: 'Ередивізі',
     comp_premier_league_ukr: "Українська Прем'єр-ліга",
+    comp_pro_league_be: 'Бельгійська Про-ліга',
   },
 }
 
@@ -133,6 +135,7 @@ export const countryNames: Record<Language, Record<string, string>> = {
     FR: 'France',
     NL: 'Netherlands',
     UKR: 'Ukraine',
+    BEL: 'Belgium',
   },
   uk: {
     GB: 'Англія',
@@ -142,6 +145,7 @@ export const countryNames: Record<Language, Record<string, string>> = {
     FR: 'Франція',
     NL: 'Нідерланди',
     UKR: 'Україна',
+    BEL: 'Бельгія',
   },
 }
 
@@ -285,4 +289,23 @@ export const teamNamesUkByName: Record<string, string> = {
   'Obolon Kyiv': 'Оболонь Київ',
   'Kryvbas': 'Кривбас',
   'Kudrivka': 'Кудрівка',
+  // Belgian Pro League
+  'Club Brugge': 'Брюгге',
+  'St. Gilloise': 'Юніон Сен-Жилуаз',
+  'Gent': 'Гент',
+  'Charleroi': 'Шарлеруа',
+  'Anderlecht': 'Андерлехт',
+  'Genk': 'Генк',
+  'Lommel SK': 'Ломмел',
+  'Westerlo': 'Вестерло',
+  'Standard': 'Стандард Льєж',
+  'Mechelen': 'Мехелен',
+  'Waregem': 'Варегем',
+  'Antwerp': 'Антверпен',
+  'Beveren': 'Беверен',
+  'Oud-Heverlee Leuven': 'Ауд-Геверле Левен',
+  'St Truiden': 'Сінт-Трейден',
+  "RAAL La Louviere": "Ла-Лув'єр",
+  'Cercle Brugge': 'Серкль Брюгге',
+  'Kortrijk': 'Кортрейк',
 }

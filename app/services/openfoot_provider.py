@@ -1,7 +1,7 @@
 """Standings provider for openfootapi.com (v1).
 
-Currently scoped to the Ukrainian Premier League, which football-data.org does
-not expose in its top-flight catalog.
+Covers top-flight leagues that football-data.org does not expose on its free
+tier: the Ukrainian Premier League and the Belgian Pro League.
 """
 
 from __future__ import annotations
@@ -16,13 +16,16 @@ from app.models.standings import StandingsData, StandingRow, Team
 from app.services.base import ProviderError, StandingsProvider
 from app.services.rate_limiter import RequestQueue
 
-# openfootapi.com identifiers for the Ukrainian top flight.
-_UKRAINIAN_LEAGUE_ID = "comp_premier_league_ukr"
-_UKRAINIAN_COUNTRY_CODE = "UKR"  # ISO 3166-1 alpha-3 (Ukraine)
+# openfootapi.com identifiers for top flights absent from football-data.org.
+# id -> (fallback name, fallback country name, ISO 3166-1 alpha-3 country code)
+_OPENFOOT_LEAGUES: dict[str, tuple[str, str, str]] = {
+    "comp_premier_league_ukr": ("Ukrainian Premier League", "Ukraine", "UKR"),
+    "comp_pro_league_be": ("Pro League", "Belgium", "BEL"),
+}
 
 
 class OpenFootProvider:
-    """openfootapi.com standings provider (Ukraine, tier 1)."""
+    """openfootapi.com standings provider for leagues missing from football-data.org."""
 
     source = "openfoot"
 
@@ -60,24 +63,26 @@ class OpenFootProvider:
 
     def get_leagues(self) -> list[League]:
         payload = self._get("/v1/competitions")
-        for comp in payload.get("data") or []:
-            if comp.get("id") != _UKRAINIAN_LEAGUE_ID:
-                continue
+        by_id = {comp.get("id"): comp for comp in payload.get("data") or []}
+
+        leagues: list[League] = []
+        for league_id, (fallback_name, country, country_code) in _OPENFOOT_LEAGUES.items():
+            comp = by_id.get(league_id)
+            if comp is None:
+                raise ProviderError(f"{fallback_name} ({league_id}) not found")
             coverage = comp.get("coverage") or {}
             if not coverage.get("standings"):
-                raise ProviderError(f"{_UKRAINIAN_LEAGUE_ID} has no standings coverage")
-            return [
+                raise ProviderError(f"{league_id} has no standings coverage")
+            leagues.append(
                 League(
-                    code=comp.get("id", _UKRAINIAN_LEAGUE_ID),
-                    name=comp.get("name") or "Ukrainian Premier League",
-                    country=comp.get("country") or "Ukraine",
-                    country_code=_UKRAINIAN_COUNTRY_CODE,
+                    code=comp.get("id", league_id),
+                    name=comp.get("name") or fallback_name,
+                    country=comp.get("country") or country,
+                    country_code=country_code,
                     emblem=None,
                 )
-            ]
-        raise ProviderError(
-            f"Ukrainian Premier League ({_UKRAINIAN_LEAGUE_ID}) not found"
-        )
+            )
+        return leagues
 
     def get_standings(self, league_code: str) -> StandingsData:
         payload = self._get("/v1/standings", params={"competition": league_code})
