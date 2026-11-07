@@ -115,6 +115,7 @@ export const leagueNames: Record<Language, Record<string, string>> = {
     comp_pro_league_be: 'Belgian Pro League',
     comp_super_lig_tr: 'Turkish Süper Lig',
     comp_super_league_grc: 'Greek Super League',
+    comp_czech_first_league_cze: 'Czech First League',
   },
   uk: {
     PL: "Прем'єр-ліга",
@@ -127,6 +128,7 @@ export const leagueNames: Record<Language, Record<string, string>> = {
     comp_pro_league_be: 'Бельгійська Про-ліга',
     comp_super_lig_tr: 'Турецька Суперліга',
     comp_super_league_grc: 'Грецька Суперліга',
+    comp_czech_first_league_cze: 'Чеська Перша ліга',
   },
 }
 
@@ -142,6 +144,7 @@ export const countryNames: Record<Language, Record<string, string>> = {
     BEL: 'Belgium',
     TUR: 'Turkey',
     GRC: 'Greece',
+    CZE: 'Czech Republic',
   },
   uk: {
     GB: 'Англія',
@@ -154,6 +157,7 @@ export const countryNames: Record<Language, Record<string, string>> = {
     BEL: 'Бельгія',
     TUR: 'Туреччина',
     GRC: 'Греція',
+    CZE: 'Чехія',
   },
 }
 
@@ -350,4 +354,21 @@ export const teamNamesUkByName: Record<string, string> = {
   'Panserraikos': 'Пансерраїкос',
   'Athens Kallithea': 'Афіни Каллітея',
   'Lamia': 'Ламія',
+  // Czech First League
+  'Sparta Prague': 'Спарта Прага',
+  'Slavia Prague': 'Славія Прага',
+  'Viktoria Plzen': 'Вікторія Пльзень',
+  'Banik Ostrava': 'Банік Острава',
+  'Sigma Olomouc': 'Сигма Оломоуць',
+  'Slovan Liberec': 'Слован Ліберець',
+  'Jablonec': 'Яблонець',
+  'Hradec Kralove': 'Градець-Кралове',
+  'Mlada Boleslav': 'Млада-Болеслав',
+  'Bohemians 1905': 'Богеміанс 1905',
+  'Ceske Budejovice': 'Чеські Будейовиці',
+  'Pardubice': 'Пардубиці',
+  'Karvina': 'Карвіна',
+  'Teplice': 'Тепліце',
+  'Slovacko': 'Словацько',
+  'Dukla Praha': 'Дукла Прага',
 }

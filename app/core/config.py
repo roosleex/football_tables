@@ -44,9 +44,9 @@ class Settings(BaseSettings):
 
     # openfootapi.com integration: a secondary standings source for leagues not
     # covered by football-data.org (the Ukrainian Premier League, the Belgian
-    # Pro League, the Turkish Süper Lig and the Greek Super League).
-    # OPENFOOT_API_KEY authenticates requests; FOOTAPI_MAX_REQUESTS_PER_MINUTE
-    # controls its per-minute request budget.
+    # Pro League, the Turkish Süper Lig, the Greek Super League and the Czech
+    # First League). OPENFOOT_API_KEY authenticates requests;
+    # FOOTAPI_MAX_REQUESTS_PER_MINUTE controls its per-minute request budget.
     openfoot_api_key: str | None = None
     openfoot_base_url: str = "https://openfootapi.com"
     footapi_max_requests_per_minute: int = 60
