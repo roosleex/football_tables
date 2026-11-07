@@ -1,8 +1,8 @@
 """Standings provider for openfootapi.com (v1).
 
 Covers top-flight leagues that football-data.org does not expose on its free
-tier: the Ukrainian Premier League, the Belgian Pro League and the Turkish
-Süper Lig.
+tier: the Ukrainian Premier League, the Belgian Pro League, the Turkish Süper
+Lig and the Greek Super League.
 """
 
 from __future__ import annotations
@@ -23,6 +23,7 @@ _OPENFOOT_LEAGUES: dict[str, tuple[str, str, str]] = {
     "comp_premier_league_ukr": ("Ukrainian Premier League", "Ukraine", "UKR"),
     "comp_pro_league_be": ("Pro League", "Belgium", "BEL"),
     "comp_super_lig_tr": ("Süper Lig", "Turkey", "TUR"),
+    "comp_super_league_grc": ("Super League", "Greece", "GRC"),
 }
 
 

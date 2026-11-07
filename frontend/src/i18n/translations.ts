@@ -114,6 +114,7 @@ export const leagueNames: Record<Language, Record<string, string>> = {
     comp_premier_league_ukr: 'Ukrainian Premier League',
     comp_pro_league_be: 'Belgian Pro League',
     comp_super_lig_tr: 'Turkish Süper Lig',
+    comp_super_league_grc: 'Greek Super League',
   },
   uk: {
     PL: "Прем'єр-ліга",
@@ -125,6 +126,7 @@ export const leagueNames: Record<Language, Record<string, string>> = {
     comp_premier_league_ukr: "Українська Прем'єр-ліга",
     comp_pro_league_be: 'Бельгійська Про-ліга',
     comp_super_lig_tr: 'Турецька Суперліга',
+    comp_super_league_grc: 'Грецька Суперліга',
   },
 }
 
@@ -139,6 +141,7 @@ export const countryNames: Record<Language, Record<string, string>> = {
     UKR: 'Ukraine',
     BEL: 'Belgium',
     TUR: 'Turkey',
+    GRC: 'Greece',
   },
   uk: {
     GB: 'Англія',
@@ -150,6 +153,7 @@ export const countryNames: Record<Language, Record<string, string>> = {
     UKR: 'Україна',
     BEL: 'Бельгія',
     TUR: 'Туреччина',
+    GRC: 'Греція',
   },
 }
 
@@ -331,4 +335,19 @@ export const teamNamesUkByName: Record<string, string> = {
   'Gaziantep': 'Газіантеп',
   'Samsunspor': 'Самсунспор',
   'Eyupspor': 'Еюпспор',
+  // Greek Super League
+  'Olympiakos': 'Олімпіакос',
+  'Panathinaikos': 'Панатінаїкос',
+  'PAOK': 'ПАОК',
+  'Aris': 'Аріс',
+  'AEK': 'АЕК',
+  'Levadeiakos': 'Левадіакос',
+  'Panetolikos': 'Панетолікос',
+  'Asteras Tripolis': 'Астерас Тріполіс',
+  'Atromitos': 'Атромітос',
+  'Volos NFC': 'Волос',
+  'OFI Crete': 'ОФІ Крит',
+  'Panserraikos': 'Пансерраїкос',
+  'Athens Kallithea': 'Афіни Каллітея',
+  'Lamia': 'Ламія',
 }
