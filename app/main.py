@@ -12,6 +12,7 @@ from app.api.routes import router as api_router
 from app.core.config import Settings, get_settings
 from app.core.leagues import DEFAULT_LEAGUES, LeagueCatalog
 from app.db.sqlite import StandingsRepository
+from app.services.apifootball_provider import ApiFootballProvider
 from app.services.base import StandingsProvider
 from app.services.demo_provider import DemoProvider
 from app.services.football_data_provider import FootballDataProvider
@@ -28,6 +29,8 @@ def build_providers(settings: Settings) -> list[StandingsProvider]:
         providers.append(DemoProvider())
     if settings.openfoot_api_key:
         providers.append(OpenFootProvider(settings))
+    if settings.apifootball_api_key:
+        providers.append(ApiFootballProvider(settings))
     return providers
 
 

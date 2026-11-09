@@ -423,7 +423,9 @@ export const teamNamesUkByName: Record<string, string> = {
   'Lamia': 'Ламія',
   // Czech First League
   'Sparta Prague': 'Спарта Прага',
+  'Sparta Praha': 'Спарта Прага',
   'Slavia Prague': 'Славія Прага',
+  'Slavia Praha': 'Славія Прага',
   'Viktoria Plzen': 'Вікторія Пльзень',
   'Banik Ostrava': 'Банік Острава',
   'Sigma Olomouc': 'Сигма Оломоуць',
@@ -433,6 +435,7 @@ export const teamNamesUkByName: Record<string, string> = {
   'Mlada Boleslav': 'Млада-Болеслав',
   'Bohemians 1905': 'Богеміанс 1905',
   'Ceske Budejovice': 'Чеські Будейовиці',
+  'Dynamo Ceske Budejovice': 'Динамо Чеські Будейовиці',
   'Pardubice': 'Пардубиці',
   'Karvina': 'Карвіна',
   'Teplice': 'Тепліце',

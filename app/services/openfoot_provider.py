@@ -2,7 +2,7 @@
 
 Covers top-flight leagues that football-data.org does not expose on its free
 tier: the Ukrainian Premier League, the Belgian Pro League, the Turkish Süper
-Lig, the Greek Super League, the Czech First League, the Polish Ekstraklasa,
+Lig, the Greek Super League, the Polish Ekstraklasa,
 the Norwegian Eliteserien, the Danish Superliga, the Cypriot First Division,
 the Swiss Super League, the Austrian Bundesliga, the Nemzeti Bajnokság I, the
 Croatian Football League (HNL), the Swedish Allsvenskan, the Scottish
@@ -28,7 +28,6 @@ _OPENFOOT_LEAGUES: dict[str, tuple[str, str, str]] = {
     "comp_pro_league_be": ("Pro League", "Belgium", "BEL"),
     "comp_super_lig_tr": ("Süper Lig", "Turkey", "TUR"),
     "comp_super_league_grc": ("Super League", "Greece", "GRC"),
-    "comp_czech_first_league_cze": ("Czech First League", "Czech Republic", "CZE"),
     "comp_ekstraklasa_pol": ("Ekstraklasa", "Poland", "POL"),
     "comp_eliteserien_nor": ("Eliteserien", "Norway", "NOR"),
     "comp_superliga_dnk": ("Danish Superliga", "Denmark", "DNK"),

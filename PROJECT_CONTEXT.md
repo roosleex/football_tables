@@ -72,12 +72,6 @@ Add ukrainian language for newly added league.
 ----------
 
 Using https://openfootapi.com/ API
-add to the menu standings of Czech Republic league.
-Add ukrainian language for newly added league.
-
-----------
-
-Using https://openfootapi.com/ API
 add to the menu standings of Poland league.
 Add ukrainian language for newly added league.
 
@@ -179,6 +173,16 @@ add to the menu standings of Romania league.
 Add ukrainian language for newly added league.
 
 ----------
+
+Using api-football.com API
+add to the menu standings of Czech Republic league.
+Add ukrainian language for newly added league.
+Use setting from .env APIFOOTBALL_ONEREQ_EVERY_MINUTES
+Do one request to api-football.com API every APIFOOTBALL_ONEREQ_EVERY_MINUTES minutes
+
+----------
+
+
 
 
 
