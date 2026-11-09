@@ -30,7 +30,6 @@ export interface Translation {
   formWin: string
   formDraw: string
   formLoss: string
-  live: string
   demo: string
   resetSettings: string
   closeLeague: string
@@ -67,7 +66,6 @@ export const translations: Record<Language, Translation> = {
     formWin: 'W',
     formDraw: 'D',
     formLoss: 'L',
-    live: 'live',
     demo: 'demo',
     resetSettings: 'Reset settings',
     closeLeague: 'Close league',
@@ -102,7 +100,6 @@ export const translations: Record<Language, Translation> = {
     formWin: 'В',
     formDraw: 'Н',
     formLoss: 'П',
-    live: 'реальні',
     demo: 'демо',
     resetSettings: 'Скинути налаштування',
     closeLeague: 'Закрити лігу',
@@ -116,6 +113,7 @@ export const leagueNames: Record<Language, Record<string, string>> = {
     BL1: 'Bundesliga',
     SA: 'Serie A',
     FL1: 'Ligue 1',
+    PPL: 'Primeira Liga',
     DED: 'Eredivisie',
     comp_premier_league_ukr: 'Ukrainian Premier League',
     comp_pro_league_be: 'Belgian Pro League',
@@ -137,6 +135,7 @@ export const leagueNames: Record<Language, Record<string, string>> = {
     BL1: 'Бундесліга',
     SA: 'Серія А',
     FL1: 'Ліга 1',
+    PPL: 'Прімейра-ліга',
     DED: 'Ередивізі',
     comp_premier_league_ukr: "Українська Прем'єр-ліга",
     comp_pro_league_be: 'Бельгійська Про-ліга',
@@ -161,6 +160,7 @@ export const countryNames: Record<Language, Record<string, string>> = {
     DE: 'Germany',
     IT: 'Italy',
     FR: 'France',
+    POR: 'Portugal',
     NL: 'Netherlands',
     UKR: 'Ukraine',
     BEL: 'Belgium',
@@ -182,6 +182,7 @@ export const countryNames: Record<Language, Record<string, string>> = {
     DE: 'Німеччина',
     IT: 'Італія',
     FR: 'Франція',
+    POR: 'Португалія',
     NL: 'Нідерланди',
     UKR: 'Україна',
     BEL: 'Бельгія',

@@ -149,6 +149,18 @@ Add ukrainian language for newly added league.
 
 ----------
 
+Text of span with css classes source-badge source-live set always to LIVE. Do not translate text of that span
+
+----------
+
+Set name of PPL (portugal league ) properly. Now it is called PPL and I do not understand what is PPL mean 
+
+----------
+
+Add horizontal scroll bar to the standings table when a user screen is narrow to be available
+to scroll table horizontally on small screens
+
+----------
 
 
 

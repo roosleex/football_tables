@@ -72,7 +72,7 @@ export function StandingsTable({ standings, lastUpdated }: StandingsTableProps) 
             ? t('season', { season: standings.season })
             : t('currentSeason')}
           <span className={`source-badge source-${standings.source}`}>
-            {t(standings.source as 'live' | 'demo')}
+            {standings.source === 'live' ? 'LIVE' : t('demo')}
           </span>
         </p>
         {updatedAt && (
