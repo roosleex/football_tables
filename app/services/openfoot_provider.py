@@ -5,7 +5,8 @@ tier: the Ukrainian Premier League, the Belgian Pro League, the Turkish Süper
 Lig, the Greek Super League, the Czech First League, the Polish Ekstraklasa,
 the Norwegian Eliteserien, the Danish Superliga, the Cypriot First Division,
 the Swiss Super League, the Austrian Bundesliga, the Nemzeti Bajnokság I, the
-Croatian Football League (HNL) and the Swedish Allsvenskan.
+Croatian Football League (HNL), the Swedish Allsvenskan, the Scottish
+Premiership and the Romanian SuperLiga.
 """
 
 from __future__ import annotations
@@ -37,6 +38,8 @@ _OPENFOOT_LEAGUES: dict[str, tuple[str, str, str]] = {
     "comp_nb_1_hun": ("Nemzeti Bajnokság I", "Hungary", "HUN"),
     "comp_hnl_cro": ("Croatian Football League (HNL)", "Croatia", "HRV"),
     "comp_allsvenskan_swe": ("Allsvenskan", "Sweden", "SWE"),
+    "comp_scottish_prem_sco": ("Scottish Premiership", "Scotland", "SCO"),
+    "comp_superliga_ro": ("SuperLiga", "Romania", "ROU"),
 }
 
 

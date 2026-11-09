@@ -126,6 +126,8 @@ export const leagueNames: Record<Language, Record<string, string>> = {
     comp_nb_1_hun: 'Nemzeti Bajnokság I',
     comp_hnl_cro: 'Croatian Football League (HNL)',
     comp_allsvenskan_swe: 'Allsvenskan',
+    comp_scottish_prem_sco: 'Scottish Premiership',
+    comp_superliga_ro: 'Romanian SuperLiga',
   },
   uk: {
     PL: "Прем'єр-ліга",
@@ -149,6 +151,8 @@ export const leagueNames: Record<Language, Record<string, string>> = {
     comp_nb_1_hun: 'Чемпіонат Угорщини',
     comp_hnl_cro: 'Хорватська футбольна ліга',
     comp_allsvenskan_swe: 'Аллсвенскан',
+    comp_scottish_prem_sco: "Шотландський Прем'єршип",
+    comp_superliga_ro: 'Румунська Суперліга',
   },
 }
 
@@ -175,6 +179,8 @@ export const countryNames: Record<Language, Record<string, string>> = {
     HUN: 'Hungary',
     HRV: 'Croatia',
     SWE: 'Sweden',
+    SCO: 'Scotland',
+    ROU: 'Romania',
   },
   uk: {
     GB: 'Англія',
@@ -198,6 +204,8 @@ export const countryNames: Record<Language, Record<string, string>> = {
     HUN: 'Угорщина',
     HRV: 'Хорватія',
     SWE: 'Швеція',
+    SCO: 'Шотландія',
+    ROU: 'Румунія',
   },
 }
 
@@ -561,4 +569,34 @@ export const teamNamesUkByName: Record<string, string> = {
   'Degerfors': 'Дегерфорс',
   'Orgryte': 'Ергрюте',
   'Halmstad': 'Гальмстад',
+  // Scottish Premiership
+  'Celtic': 'Селтік',
+  'Rangers': 'Рейнджерс',
+  'Falkirk': 'Фолкерк',
+  'Hearts': 'Гартс',
+  'Dundee': 'Данді',
+  'Dundee United': 'Данді Юнайтед',
+  'St Johnstone': 'Сент-Джонстон',
+  'St Mirren': 'Сент-Міррен',
+  'Motherwell': 'Мазервелл',
+  'Hibernian': 'Гіберніан',
+  'Aberdeen': 'Абердін',
+  'Kilmarnock': 'Кілмарнок',
+  // Romanian SuperLiga
+  'Dinamo Bucuresti': 'Динамо Бухарест',
+  'Univ. Craiova': 'Університатя Крайова',
+  'FC Rapid Bucuresti': 'Рапід Бухарест',
+  'U. Cluj': 'Університатя Клуж',
+  'Petrolul': 'Петролул',
+  'Farul Constanta': 'Фарул Констанца',
+  'FCSB': 'ФКСБ',
+  'Corvinul': 'Корвінул',
+  'CFR Cluj': 'ЧФР Клуж',
+  'UTA Arad': 'УТА Арад',
+  'Sepsi Sf. Gheorghe': 'Сепсі',
+  'FC Botosani': 'Ботошані',
+  'Otelul': 'Оцелул',
+  'FC Arges': 'Арджеш',
+  'FC Voluntari': 'Волунтарі',
+  'Csikszereda M. Ciuc': 'Чіксереда',
 }
