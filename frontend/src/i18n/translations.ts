@@ -30,7 +30,6 @@ export interface Translation {
   formWin: string
   formDraw: string
   formLoss: string
-  demo: string
   resetSettings: string
   closeLeague: string
 }
@@ -66,7 +65,6 @@ export const translations: Record<Language, Translation> = {
     formWin: 'W',
     formDraw: 'D',
     formLoss: 'L',
-    demo: 'demo',
     resetSettings: 'Reset settings',
     closeLeague: 'Close league',
   },
@@ -100,7 +98,6 @@ export const translations: Record<Language, Translation> = {
     formWin: 'В',
     formDraw: 'Н',
     formLoss: 'П',
-    demo: 'демо',
     resetSettings: 'Скинути налаштування',
     closeLeague: 'Закрити лігу',
   },
@@ -128,6 +125,7 @@ export const leagueNames: Record<Language, Record<string, string>> = {
     comp_bundesliga_aut: 'Austrian Bundesliga',
     comp_nb_1_hun: 'Nemzeti Bajnokság I',
     comp_hnl_cro: 'Croatian Football League (HNL)',
+    comp_allsvenskan_swe: 'Allsvenskan',
   },
   uk: {
     PL: "Прем'єр-ліга",
@@ -150,6 +148,7 @@ export const leagueNames: Record<Language, Record<string, string>> = {
     comp_bundesliga_aut: 'Австрійська Бундесліга',
     comp_nb_1_hun: 'Чемпіонат Угорщини',
     comp_hnl_cro: 'Хорватська футбольна ліга',
+    comp_allsvenskan_swe: 'Аллсвенскан',
   },
 }
 
@@ -175,6 +174,7 @@ export const countryNames: Record<Language, Record<string, string>> = {
     AUT: 'Austria',
     HUN: 'Hungary',
     HRV: 'Croatia',
+    SWE: 'Sweden',
   },
   uk: {
     GB: 'Англія',
@@ -197,6 +197,7 @@ export const countryNames: Record<Language, Record<string, string>> = {
     AUT: 'Австрія',
     HUN: 'Угорщина',
     HRV: 'Хорватія',
+    SWE: 'Швеція',
   },
 }
 
@@ -543,4 +544,21 @@ export const teamNamesUkByName: Record<string, string> = {
   'Rudeš': 'Рудеш',
   'NK Lokomotiva': 'Локомотива',
   'HNK Gorica': 'Гориця',
+  // Swedish Allsvenskan
+  'Sirius': 'Сіріус',
+  'Hammarby': 'Гаммарбю',
+  'Djurgarden': 'Юргорден',
+  'Hacken': 'Геккен',
+  'Elfsborg': 'Ельфсборг',
+  'Vasteras SK': 'Вестерос',
+  'Malmo FF': 'Мальме',
+  'AIK': 'АІК',
+  'Goteborg': 'Гетеборг',
+  'GAIS': 'ГАІС',
+  'Brommapojkarna': 'Броммапойкарна',
+  "Mjallby": "М'єльбю",
+  'Kalmar': 'Кальмар',
+  'Degerfors': 'Дегерфорс',
+  'Orgryte': 'Ергрюте',
+  'Halmstad': 'Гальмстад',
 }

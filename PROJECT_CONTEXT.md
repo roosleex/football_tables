@@ -162,6 +162,12 @@ to scroll table horizontally on small screens
 
 ----------
 
+Using https://openfootapi.com/ API
+add to the menu standings of Sweden league.
+Add ukrainian language for newly added league.
+
+----------
+
 
 
 

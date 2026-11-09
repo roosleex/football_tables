@@ -4,8 +4,8 @@ Covers top-flight leagues that football-data.org does not expose on its free
 tier: the Ukrainian Premier League, the Belgian Pro League, the Turkish Süper
 Lig, the Greek Super League, the Czech First League, the Polish Ekstraklasa,
 the Norwegian Eliteserien, the Danish Superliga, the Cypriot First Division,
-the Swiss Super League, the Austrian Bundesliga, the Nemzeti Bajnokság I and
-the Croatian Football League (HNL).
+the Swiss Super League, the Austrian Bundesliga, the Nemzeti Bajnokság I, the
+Croatian Football League (HNL) and the Swedish Allsvenskan.
 """
 
 from __future__ import annotations
@@ -36,6 +36,7 @@ _OPENFOOT_LEAGUES: dict[str, tuple[str, str, str]] = {
     "comp_bundesliga_aut": ("Austrian Bundesliga", "Austria", "AUT"),
     "comp_nb_1_hun": ("Nemzeti Bajnokság I", "Hungary", "HUN"),
     "comp_hnl_cro": ("Croatian Football League (HNL)", "Croatia", "HRV"),
+    "comp_allsvenskan_swe": ("Allsvenskan", "Sweden", "SWE"),
 }
 
 

@@ -338,11 +338,6 @@ body {
   color: #86efac;
 }
 
-.source-demo {
-  background: #78350f;
-  color: #fdba74;
-}
-
 .table-wrap {
   margin-top: 12px;
   border: 1px solid var(--border);
