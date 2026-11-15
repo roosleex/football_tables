@@ -180,6 +180,23 @@ Add ukrainian language for newly added league.
 Use setting from .env THESPORTSDB_MAX_REQUESTS_PER_MINUTE
 and do requests every minute not greater than THESPORTSDB_MAX_REQUESTS_PER_MINUTE
 
+----------
+
+Using https://openfootapi.com/ API
+add to the menu standings of Azerbaijan league.
+Add ukrainian language for newly added league.
+
+----------
+
+Using https://openfootapi.com/ API
+add to the menu standings of Israel league.
+Add ukrainian language for newly added league.
+
+----------
+
+Using https://openfootapi.com/ API
+add to the menu standings of Slovenia league.
+Add ukrainian language for newly added league.
 
 ----------
 
