@@ -8,7 +8,8 @@ the Swiss Super League, the Austrian Bundesliga, the Nemzeti Bajnokság I, the
 Croatian Football League (HNL), the Swedish Allsvenskan, the Scottish
 Premiership, the Romanian SuperLiga, the Azerbaijan Premier League, the
 Israeli Premier League, the Slovenian PrvaLiga, the Slovak Super Liga, the
-Bulgarian First League and the Serbian SuperLiga.
+Bulgarian First League, the Serbian SuperLiga, the Icelandic Besta deild, the
+League of Ireland Premier Division and the Armenian Premier League.
 """
 
 from __future__ import annotations
@@ -47,6 +48,13 @@ _OPENFOOT_LEAGUES: dict[str, tuple[str, str, str]] = {
     "comp_nike_liga_svk": ("Slovak Super Liga", "Slovakia", "SVK"),
     "comp_parva_liga_bul": ("Bulgarian First League", "Bulgaria", "BGR"),
     "comp_superliga_srb": ("Serbian SuperLiga", "Serbia", "SRB"),
+    "comp_besta_deild_isl": ("Icelandic Besta deild", "Iceland", "ISL"),
+    "comp_premier_division_irl": (
+        "League of Ireland Premier Division",
+        "Ireland",
+        "IRL",
+    ),
+    "comp_premier_league_arm": ("Armenian Premier League", "Armenia", "ARM"),
 }
 
 
