@@ -49,8 +49,9 @@ class Settings(BaseSettings):
     # Cypriot First Division, the Swiss Super League, the Austrian Bundesliga,
     # the Nemzeti Bajnokság I, the Croatian Football League (HNL), the Swedish
     # Allsvenskan, the Scottish Premiership, the Romanian SuperLiga, the
-    # Azerbaijan Premier League, the Israeli Premier League and the Slovenian
-    # PrvaLiga).
+    # Azerbaijan Premier League, the Israeli Premier League, the Slovenian
+    # PrvaLiga, the Slovak Super Liga, the Bulgarian First League and the
+    # Serbian SuperLiga).
     # OPENFOOT_API_KEY authenticates requests; FOOTAPI_MAX_REQUESTS_PER_MINUTE
     # controls its per-minute request budget.
     openfoot_api_key: str | None = None

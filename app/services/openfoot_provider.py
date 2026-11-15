@@ -7,7 +7,8 @@ the Norwegian Eliteserien, the Danish Superliga, the Cypriot First Division,
 the Swiss Super League, the Austrian Bundesliga, the Nemzeti Bajnokság I, the
 Croatian Football League (HNL), the Swedish Allsvenskan, the Scottish
 Premiership, the Romanian SuperLiga, the Azerbaijan Premier League, the
-Israeli Premier League and the Slovenian PrvaLiga.
+Israeli Premier League, the Slovenian PrvaLiga, the Slovak Super Liga, the
+Bulgarian First League and the Serbian SuperLiga.
 """
 
 from __future__ import annotations
@@ -43,6 +44,9 @@ _OPENFOOT_LEAGUES: dict[str, tuple[str, str, str]] = {
     "comp_premier_league_aze": ("Azerbaijan Premier League", "Azerbaijan", "AZE"),
     "comp_ligat_ha_al_isr": ("Israeli Premier League", "Israel", "ISR"),
     "comp_prva_liga_svn": ("Slovenian PrvaLiga", "Slovenia", "SVN"),
+    "comp_nike_liga_svk": ("Slovak Super Liga", "Slovakia", "SVK"),
+    "comp_parva_liga_bul": ("Bulgarian First League", "Bulgaria", "BGR"),
+    "comp_superliga_srb": ("Serbian SuperLiga", "Serbia", "SRB"),
 }
 
 

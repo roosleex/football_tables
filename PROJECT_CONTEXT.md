@@ -204,6 +204,28 @@ Add ukrainian language for newly added league.
 
 
 
+Using https://openfootapi.com/ API
+add to the menu standings of Slovakia league.
+Add ukrainian language for newly added league.
+
+----------
+
+Using https://openfootapi.com/ API
+add to the menu standings of Bulgaria league.
+Add ukrainian language for newly added league.
+
+----------
+
+Using https://openfootapi.com/ API
+add to the menu standings of Serbia league.
+Add ukrainian language for newly added league.
+
+----------
+
+
+
+
+
 
 
 
