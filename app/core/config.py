@@ -55,15 +55,6 @@ class Settings(BaseSettings):
     openfoot_base_url: str = "https://openfootapi.com"
     footapi_max_requests_per_minute: int = 60
 
-    # api-football.com (API-Sports) integration: used for the Czech First
-    # League. Requests are throttled to one every
-    # APIFOOTBALL_ONEREQ_EVERY_MINUTES minutes so the free plan is never
-    # exceeded.
-    apifootball_api_key: str | None = None
-    apifootball_base_url: str = "https://v3.football.api-sports.io"
-    apifootball_one_req_every_minutes: int = 15
-    apifootball_czech_league_id: int = 345
-
     cors_origins: list[str] = [
         "http://localhost:5173",
         "http://127.0.0.1:5173",
