@@ -177,8 +177,9 @@ Add ukrainian language for newly added league.
 Using thesportsdb.com API
 add to the menu standings of Czech Republic league.
 Add ukrainian language for newly added league.
-Use setting from .env APIFOOTBALL_ONEREQ_EVERY_MINUTES
-Do one request to api-football.com API every APIFOOTBALL_ONEREQ_EVERY_MINUTES minutes
+Use setting from .env THESPORTSDB_MAX_REQUESTS_PER_MINUTE
+and do requests every minute not greater than THESPORTSDB_MAX_REQUESTS_PER_MINUTE
+
 
 ----------
 

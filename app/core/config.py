@@ -55,6 +55,13 @@ class Settings(BaseSettings):
     openfoot_base_url: str = "https://openfootapi.com"
     footapi_max_requests_per_minute: int = 60
 
+    # thesportsdb.com integration: used for the Czech First League. The free
+    # tier accepts the public key "123"; THESPORTSDB_MAX_REQUESTS_PER_MINUTE
+    # controls its per-minute request budget (the free tier allows 30).
+    thesportsdb_api_key: str = "123"
+    thesportsdb_base_url: str = "https://www.thesportsdb.com/api/v1/json"
+    thesportsdb_max_requests_per_minute: int = 30
+
     cors_origins: list[str] = [
         "http://localhost:5173",
         "http://127.0.0.1:5173",

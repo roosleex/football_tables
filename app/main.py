@@ -18,6 +18,7 @@ from app.services.football_data_provider import FootballDataProvider
 from app.services.openfoot_provider import OpenFootProvider
 from app.services.refresh_scheduler import RefreshScheduler
 from app.services.standings_service import StandingsService
+from app.services.thesportsdb_provider import TheSportsDbProvider
 
 
 def build_providers(settings: Settings) -> list[StandingsProvider]:
@@ -28,6 +29,8 @@ def build_providers(settings: Settings) -> list[StandingsProvider]:
         providers.append(DemoProvider())
     if settings.openfoot_api_key:
         providers.append(OpenFootProvider(settings))
+    if settings.thesportsdb_api_key:
+        providers.append(TheSportsDbProvider(settings))
     return providers
 
 

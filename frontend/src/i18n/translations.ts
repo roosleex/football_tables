@@ -441,6 +441,16 @@ export const teamNamesUkByName: Record<string, string> = {
   'Teplice': 'Тепліце',
   'Slovacko': 'Словацько',
   'Dukla Praha': 'Дукла Прага',
+  // Czech First League (TheSportsDB naming)
+  'Viktoria Plzeň': 'Вікторія Пльзень',
+  'Baník Ostrava': 'Банік Острава',
+  'Hradec Králové': 'Градець-Кралове',
+  'Mladá Boleslav': 'Млада-Болеслав',
+  'Zlín': 'Злін',
+  'Dynamo České Budějovice': 'Динамо Чеські Будейовиці',
+  'České Budějovice': 'Чеські Будейовиці',
+  'Karviná': 'Карвіна',
+  'Slovácko': 'Словацько',
   // Polish Ekstraklasa
   'Lech Poznan': 'Лех Познань',
   'Gornik Zabrze': 'Гурник Забже',
