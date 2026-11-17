@@ -143,6 +143,9 @@ export const leagueNames: Record<Language, Record<string, string>> = {
     comp_veikkausliiga_fin: 'Veikkausliiga',
     comp_premier_league_kaz: 'Kazakhstan Premier League',
     comp_cup_lie: 'Liechtensteiner Cup',
+    comp_national_division_mda: 'Moldovan Super League',
+    comp_premier_league_fro: 'Faroe Islands Premier League',
+    comp_kategoria_superiore_alb: 'Albanian Superliga',
   },
   uk: {
     PL: "Прем'єр-ліга",
@@ -183,6 +186,9 @@ export const leagueNames: Record<Language, Record<string, string>> = {
     comp_veikkausliiga_fin: 'Вейккаусліга',
     comp_premier_league_kaz: "Прем'єр-ліга Казахстану",
     comp_cup_lie: 'Кубок Ліхтенштейну',
+    comp_national_division_mda: 'Молдовська Суперліга',
+    comp_premier_league_fro: "Прем'єр-ліга Фарерських островів",
+    comp_kategoria_superiore_alb: 'Суперліга Албанії',
   },
 }
 
@@ -226,6 +232,9 @@ export const countryNames: Record<Language, Record<string, string>> = {
     FIN: 'Finland',
     KAZ: 'Kazakhstan',
     LIE: 'Liechtenstein',
+    MDA: 'Moldova',
+    FRO: 'Faroe Islands',
+    ALB: 'Albania',
   },
   uk: {
     GB: 'Англія',
@@ -266,6 +275,9 @@ export const countryNames: Record<Language, Record<string, string>> = {
     FIN: 'Фінляндія',
     KAZ: 'Казахстан',
     LIE: 'Ліхтенштейн',
+    MDA: 'Молдова',
+    FRO: 'Фарерські острови',
+    ALB: 'Албанія',
   },
 }
 
@@ -855,4 +867,35 @@ export const teamNamesUkByName: Record<string, string> = {
   'FC Altai Oskemen': 'Алтай',
   'Zhetysu Taldykorgan': 'Жетису',
   'Kaisar Kyzylorda': 'Кайсар',
+  // Moldovan Super League
+  'FC Sheriff': 'Шериф',
+  'Zimbru': 'Зімбру',
+  'CS Petrocub': 'Петрокуб',
+  'Dacia Buiucani': 'Дачія Буюкань',
+  'FC Milsami Orhei': 'Мілсамі',
+  'Politehnica UTM': 'Політехніка',
+  'Real Sireți': 'Реал Сірець',
+  'FC Bălți': 'Бєльці',
+  // Faroe Islands Premier League
+  'NSÍ Runavík': 'НСІ Рунавік',
+  'Klaksvik': 'Клаксвік',
+  'HB Tórshavn': 'ГБ Торсгавн',
+  'Víkingur': 'Вікінгур',
+  'B36 Tórshavn': 'Б36 Торсгавн',
+  'Skála': 'Скала',
+  'AB Argir': 'АБ Аргір',
+  'EB/Streymur': 'ЕБ/Стреймур',
+  '07 Vestur': '07 Вестур',
+  'B68 Toftir': 'Б68 Тофтір',
+  // Albanian Superliga
+  'Egnatia': 'Егнатія',
+  'Teuta Durrës': 'Теута',
+  'FC Dinamo City': 'Динамо Сіті',
+  'KF Tirana': 'Тирана',
+  'Skënderbeu': 'Скендербеу',
+  'Elbasani': 'Ельбасані',
+  'Vllaznia': 'Влазнія',
+  'Vora': 'Вора',
+  'Laçi': 'Лячі',
+  'Partizani': 'Партизані',
 }
