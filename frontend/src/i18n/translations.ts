@@ -137,6 +137,9 @@ export const leagueNames: Record<Language, Record<string, string>> = {
     comp_besta_deild_isl: 'Icelandic Besta deild',
     comp_premier_division_irl: 'League of Ireland Premier Division',
     comp_premier_league_arm: 'Armenian Premier League',
+    comp_virsliga_lva: 'Latvian Virslīga',
+    comp_premijer_liga_bih: 'Bosnian Premier League',
+    comp_superliga_kos: 'Kosovar Superleague',
   },
   uk: {
     PL: "Прем'єр-ліга",
@@ -171,6 +174,9 @@ export const leagueNames: Record<Language, Record<string, string>> = {
     comp_besta_deild_isl: 'Ісландська Беста дейльд',
     comp_premier_division_irl: "Ірландська Прем'єр-ліга",
     comp_premier_league_arm: "Вірменська Прем'єр-ліга",
+    comp_virsliga_lva: 'Латвійська Вірсліга',
+    comp_premijer_liga_bih: "Боснійська Прем'єр-ліга",
+    comp_superliga_kos: 'Суперліга Косова',
   },
 }
 
@@ -208,6 +214,9 @@ export const countryNames: Record<Language, Record<string, string>> = {
     ISL: 'Iceland',
     IRL: 'Ireland',
     ARM: 'Armenia',
+    LVA: 'Latvia',
+    BIH: 'Bosnia and Herzegovina',
+    KOS: 'Kosovo',
   },
   uk: {
     GB: 'Англія',
@@ -242,6 +251,9 @@ export const countryNames: Record<Language, Record<string, string>> = {
     ISL: 'Ісландія',
     IRL: 'Ірландія',
     ARM: 'Вірменія',
+    LVA: 'Латвія',
+    BIH: 'Боснія і Герцеговина',
+    KOS: 'Косово',
   },
 }
 
@@ -767,4 +779,37 @@ export const teamNamesUkByName: Record<string, string> = {
   'Syunik': 'Сюнік',
   'Van': 'Ван',
   'Gandzasar': 'Гандзасар',
+  // Latvian Virslīga
+  'RFS': 'РФШ',
+  'Riga FC': 'Рига',
+  'Auda': 'Ауда',
+  'BFC Daugavpils': 'БФК Даугавпілс',
+  'FK Liepāja': 'Лієпая',
+  'SK Super Nova': 'Супер Нова',
+  'FK Jelgava': 'Єлгава',
+  'Grobiņa': 'Гробіня',
+  'FK Tukums 2000': 'Тукумс 2000',
+  'Ogre United': 'Огре Юнайтед',
+  // Bosnian Premier League
+  'Zrinjski Mostar': 'Зрінські Мостар',
+  'Borac Banja Luka': 'Борац Баня-Лука',
+  'FK Sarajevo': 'Сараєво',
+  'Široki Brijeg': 'Широкі Брієг',
+  'BSK Banja Luka': 'БСК Баня-Лука',
+  'Željezničar': 'Желєзнічар',
+  'FK Velež Mostar': 'Вележ Мостар',
+  'Čelik Zenica': 'Челік Зеніца',
+  'Radnik Bijeljina': 'Радник Бієліна',
+  'Sloga Doboj': 'Слога Добой',
+  // Kosovar Superleague
+  'Prishtina': 'Приштина',
+  'Malisheva': 'Малішево',
+  'Drita': 'Дріта',
+  'Gjilani': "Г'їлані",
+  'FC Ballkani': 'Балкані',
+  'Dukagjini': 'Дукаджині',
+  'Feronikeli': 'Феронікелі',
+  'Drenica': 'Дреніца',
+  'KF Llapi': 'Ллапі',
+  'Vushtrria': 'Вуштррія',
 }

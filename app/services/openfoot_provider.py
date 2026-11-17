@@ -9,7 +9,8 @@ Croatian Football League (HNL), the Swedish Allsvenskan, the Scottish
 Premiership, the Romanian SuperLiga, the Azerbaijan Premier League, the
 Israeli Premier League, the Slovenian PrvaLiga, the Slovak Super Liga, the
 Bulgarian First League, the Serbian SuperLiga, the Icelandic Besta deild, the
-League of Ireland Premier Division and the Armenian Premier League.
+League of Ireland Premier Division, the Armenian Premier League, the Latvian
+Virslīga, the Bosnian Premier League and the Kosovar Superleague.
 """
 
 from __future__ import annotations
@@ -55,6 +56,13 @@ _OPENFOOT_LEAGUES: dict[str, tuple[str, str, str]] = {
         "IRL",
     ),
     "comp_premier_league_arm": ("Armenian Premier League", "Armenia", "ARM"),
+    "comp_virsliga_lva": ("Latvian Virslīga", "Latvia", "LVA"),
+    "comp_premijer_liga_bih": (
+        "Bosnian Premier League",
+        "Bosnia and Herzegovina",
+        "BIH",
+    ),
+    "comp_superliga_kos": ("Kosovar Superleague", "Kosovo", "KOS"),
 }
 
 

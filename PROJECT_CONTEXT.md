@@ -218,12 +218,6 @@ Add ukrainian language for newly added league.
 
 ----------
 
-
-
-
-
-
-
 Using https://openfootapi.com/ API
 add to the menu standings of Iceland league.
 Add ukrainian language for newly added league.
@@ -238,6 +232,29 @@ Add ukrainian language for newly added league.
 
 Using https://openfootapi.com/ API
 add to the menu standings of Armenia league.
+Add ukrainian language for newly added league.
+
+----------
+
+
+
+
+
+
+Using https://openfootapi.com/ API
+add to the menu standings of Latvia league.
+Add ukrainian language for newly added league.
+
+----------
+
+Using https://openfootapi.com/ API
+add to the menu standings of Bosnia and Herzegovina league.
+Add ukrainian language for newly added league.
+
+----------
+
+Using https://openfootapi.com/ API
+add to the menu standings of Kosovo league.
 Add ukrainian language for newly added league.
 
 ----------
