@@ -69,6 +69,8 @@ class RefreshScheduler:
 
     def refresh_standings(self) -> None:
         for league in self._catalog.all():
+            if not league.standings_available:
+                continue
             provider = self._provider_by_code.get(league.code.upper())
             if provider is None:
                 continue

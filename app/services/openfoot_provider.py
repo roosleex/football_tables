@@ -10,7 +10,10 @@ Premiership, the Romanian SuperLiga, the Azerbaijan Premier League, the
 Israeli Premier League, the Slovenian PrvaLiga, the Slovak Super Liga, the
 Bulgarian First League, the Serbian SuperLiga, the Icelandic Besta deild, the
 League of Ireland Premier Division, the Armenian Premier League, the Latvian
-Virslīga, the Bosnian Premier League and the Kosovar Superleague.
+Virslīga, the Bosnian Premier League, the Kosovar Superleague, the
+Veikkausliiga and the Kazakhstan Premier League. The Liechtensteiner Cup is
+also exposed in the menu with an empty table, since Liechtenstein has no
+domestic league.
 """
 
 from __future__ import annotations
@@ -63,6 +66,19 @@ _OPENFOOT_LEAGUES: dict[str, tuple[str, str, str]] = {
         "BIH",
     ),
     "comp_superliga_kos": ("Kosovar Superleague", "Kosovo", "KOS"),
+    "comp_veikkausliiga_fin": ("Veikkausliiga", "Finland", "FIN"),
+    "comp_premier_league_kaz": (
+        "Kazakhstan Premier League",
+        "Kazakhstan",
+        "KAZ",
+    ),
+}
+
+# Competitions exposed in the menu even though they have no standings table
+# (Liechtenstein has no domestic league — only a cup). Selecting one shows an
+# empty table.
+_EMPTY_STANDINGS_LEAGUES: dict[str, tuple[str, str, str]] = {
+    "comp_cup_lie": ("Liechtensteiner Cup", "Liechtenstein", "LIE"),
 }
 
 
@@ -124,9 +140,23 @@ class OpenFootProvider:
                     emblem=None,
                 )
             )
+        for league_id, (fallback_name, country, country_code) in _EMPTY_STANDINGS_LEAGUES.items():
+            comp = by_id.get(league_id)
+            leagues.append(
+                League(
+                    code=league_id,
+                    name=(comp.get("name") if comp else None) or fallback_name,
+                    country=(comp.get("country") if comp else None) or country,
+                    country_code=country_code,
+                    emblem=None,
+                    standings_available=False,
+                )
+            )
         return leagues
 
     def get_standings(self, league_code: str) -> StandingsData:
+        if league_code in _EMPTY_STANDINGS_LEAGUES:
+            return StandingsData(season=None, table=[])
         payload = self._get("/v1/standings", params={"competition": league_code})
         data = payload.get("data") or {}
         return StandingsData(

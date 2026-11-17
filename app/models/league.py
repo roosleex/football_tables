@@ -9,3 +9,4 @@ class League(BaseModel):
     country: str
     country_code: str
     emblem: str | None = None
+    standings_available: bool = True

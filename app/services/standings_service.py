@@ -24,6 +24,15 @@ class StandingsService:
         if league is None:
             raise LeagueNotFoundError(league_code)
 
+        if not league.standings_available:
+            return LeagueStandings(
+                league=league,
+                table=[],
+                season=None,
+                source="openfoot",
+                updated_at=None,
+            )
+
         stored = self._repository.get_standings(league.code)
         if stored is None:
             raise StandingsNotAvailableError(league.code)

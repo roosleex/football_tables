@@ -53,7 +53,8 @@ class Settings(BaseSettings):
     # PrvaLiga, the Slovak Super Liga, the Bulgarian First League, the Serbian
     # SuperLiga, the Icelandic Besta deild, the League of Ireland Premier
     # Division, the Armenian Premier League, the Latvian Virslīga, the
-    # Bosnian Premier League and the Kosovar Superleague).
+    # Bosnian Premier League, the Kosovar Superleague, the Veikkausliiga
+    # and the Kazakhstan Premier League).
     # OPENFOOT_API_KEY authenticates requests; FOOTAPI_MAX_REQUESTS_PER_MINUTE
     # controls its per-minute request budget.
     openfoot_api_key: str | None = None
