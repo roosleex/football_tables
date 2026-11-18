@@ -119,8 +119,8 @@ export default function App() {
         <aside className="sidebar">
           <LeagueList
             leagues={leagues}
-            selectedCode={selectedCode ?? ''}
-            onSelect={setSelectedCode}
+            selectedCode={selectedCode}
+            onSelect={(code) => setSelectedCode(code)}
           />
         </aside>
         <main className="content">

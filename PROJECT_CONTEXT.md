@@ -377,6 +377,11 @@ Fix it
 
 ----------
 
+Rearrange main menu which is in the left side of the app.
+I want current items to add to one big item called Europe. When a user clicks on Europe main menu item then subitems will open with all current items of european leagues. Also when a user clicks on Europe main menu item in the right part of app will show the flexbox with items where every item contains every league top 3 team names and theirs points of european leagues like it is viewed now.
+
+----------
+
 
 
 

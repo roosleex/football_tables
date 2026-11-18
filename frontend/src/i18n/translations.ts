@@ -32,6 +32,7 @@ export interface Translation {
   formLoss: string
   resetSettings: string
   closeLeague: string
+  europe: string
 }
 
 export const translations: Record<Language, Translation> = {
@@ -67,6 +68,7 @@ export const translations: Record<Language, Translation> = {
     formLoss: 'L',
     resetSettings: 'Reset settings',
     closeLeague: 'Close league',
+    europe: 'Europe',
   },
   uk: {
     appTitle: 'Футбольні таблиці',
@@ -100,6 +102,7 @@ export const translations: Record<Language, Translation> = {
     formLoss: 'П',
     resetSettings: 'Скинути налаштування',
     closeLeague: 'Закрити лігу',
+    europe: 'Європа',
   },
 }
 
