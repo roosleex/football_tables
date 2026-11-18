@@ -13,9 +13,12 @@ League of Ireland Premier Division, the Armenian Premier League, the Latvian
 Virslīga, the Bosnian Premier League, the Kosovar Superleague, the
 Veikkausliiga, the Kazakhstan Premier League, the Moldovan Super League, the
 Faroe Islands Premier League, the Albanian Superliga, the North Macedonian
-First League, the Lithuanian A Lyga and the Gibraltar Football League. The
-Liechtensteiner Cup is also exposed in the menu with an empty table, since
-Liechtenstein has no domestic league.
+First League, the Lithuanian A Lyga, the Gibraltar Football League, the
+Andorran Primera Divisió, the Maltese Premier League, the Estonian Premium
+Liiga, the Georgian Erovnuli Liga, the Northern Irish Premiership, the
+Luxembourg National Division, the Montenegrin First League, the Cymru Premier
+and the Campionato Sammarinese. The Liechtensteiner Cup is also exposed in
+the menu with an empty table, since Liechtenstein has no domestic league.
 """
 
 from __future__ import annotations
@@ -103,6 +106,51 @@ _OPENFOOT_LEAGUES: dict[str, tuple[str, str, str]] = {
         "Gibraltar Football League",
         "Gibraltar",
         "GIB",
+    ),
+    "comp_primera_divisio_and": (
+        "Andorran Primera Divisió",
+        "Andorra",
+        "AND",
+    ),
+    "comp_premier_league_mlt": (
+        "Maltese Premier League",
+        "Malta",
+        "MLT",
+    ),
+    "comp_premium_liiga_est": (
+        "Estonian Premium Liiga",
+        "Estonia",
+        "EST",
+    ),
+    "comp_erovnuli_liga_geo": (
+        "Georgian Erovnuli Liga",
+        "Georgia",
+        "GEO",
+    ),
+    "comp_premiership_nir": (
+        "Northern Irish Premiership",
+        "Northern Ireland",
+        "NIR",
+    ),
+    "comp_national_division_lux": (
+        "Luxembourg National Division",
+        "Luxembourg",
+        "LUX",
+    ),
+    "comp_1_cfl_mne": (
+        "Montenegrin First League",
+        "Montenegro",
+        "MNE",
+    ),
+    "comp_cymru_premier_wal": (
+        "Cymru Premier",
+        "Wales",
+        "WAL",
+    ),
+    "comp_campionato_sammarinese_smr": (
+        "Campionato Sammarinese",
+        "San Marino",
+        "SMR",
     ),
 }
 

@@ -56,7 +56,11 @@ class Settings(BaseSettings):
     # Bosnian Premier League, the Kosovar Superleague, the Veikkausliiga,
     # the Kazakhstan Premier League, the Moldovan Super League, the Faroe
     # Islands Premier League, the Albanian Superliga, the North Macedonian
-    # First League, the Lithuanian A Lyga and the Gibraltar Football League).
+    # First League, the Lithuanian A Lyga, the Gibraltar Football League, the
+    # Andorran Primera Divisió, the Maltese Premier League, the Estonian
+    # Premium Liiga, the Georgian Erovnuli Liga, the Northern Irish
+    # Premiership, the Luxembourg National Division, the Montenegrin First
+    # League, the Cymru Premier and the Campionato Sammarinese).
     # OPENFOOT_API_KEY authenticates requests; FOOTAPI_MAX_REQUESTS_PER_MINUTE
     # controls its per-minute request budget.
     openfoot_api_key: str | None = None
