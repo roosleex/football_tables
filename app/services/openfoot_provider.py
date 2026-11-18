@@ -12,9 +12,10 @@ Bulgarian First League, the Serbian SuperLiga, the Icelandic Besta deild, the
 League of Ireland Premier Division, the Armenian Premier League, the Latvian
 Virslīga, the Bosnian Premier League, the Kosovar Superleague, the
 Veikkausliiga, the Kazakhstan Premier League, the Moldovan Super League, the
-Faroe Islands Premier League and the Albanian Superliga. The Liechtensteiner
-Cup is also exposed in the menu with an empty table, since Liechtenstein has
-no domestic league.
+Faroe Islands Premier League, the Albanian Superliga, the North Macedonian
+First League, the Lithuanian A Lyga and the Gibraltar Football League. The
+Liechtensteiner Cup is also exposed in the menu with an empty table, since
+Liechtenstein has no domestic league.
 """
 
 from __future__ import annotations
@@ -87,6 +88,21 @@ _OPENFOOT_LEAGUES: dict[str, tuple[str, str, str]] = {
         "Albanian Superliga",
         "Albania",
         "ALB",
+    ),
+    "comp_prva_liga_mkd": (
+        "North Macedonian First League",
+        "North Macedonia",
+        "MKD",
+    ),
+    "comp_a_lyga_ltu": (
+        "Lithuanian A Lyga",
+        "Lithuania",
+        "LTU",
+    ),
+    "comp_football_league_gib": (
+        "Gibraltar Football League",
+        "Gibraltar",
+        "GIB",
     ),
 }
 

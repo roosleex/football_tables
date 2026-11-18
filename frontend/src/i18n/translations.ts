@@ -146,6 +146,9 @@ export const leagueNames: Record<Language, Record<string, string>> = {
     comp_national_division_mda: 'Moldovan Super League',
     comp_premier_league_fro: 'Faroe Islands Premier League',
     comp_kategoria_superiore_alb: 'Albanian Superliga',
+    comp_prva_liga_mkd: 'North Macedonian First League',
+    comp_a_lyga_ltu: 'Lithuanian A Lyga',
+    comp_football_league_gib: 'Gibraltar Football League',
   },
   uk: {
     PL: "Прем'єр-ліга",
@@ -189,6 +192,9 @@ export const leagueNames: Record<Language, Record<string, string>> = {
     comp_national_division_mda: 'Молдовська Суперліга',
     comp_premier_league_fro: "Прем'єр-ліга Фарерських островів",
     comp_kategoria_superiore_alb: 'Суперліга Албанії',
+    comp_prva_liga_mkd: "Перша ліга Північної Македонії",
+    comp_a_lyga_ltu: 'Литовська А-ліга',
+    comp_football_league_gib: 'Гібралтарська футбольна ліга',
   },
 }
 
@@ -235,6 +241,9 @@ export const countryNames: Record<Language, Record<string, string>> = {
     MDA: 'Moldova',
     FRO: 'Faroe Islands',
     ALB: 'Albania',
+    MKD: 'North Macedonia',
+    LTU: 'Lithuania',
+    GIB: 'Gibraltar',
   },
   uk: {
     GB: 'Англія',
@@ -278,6 +287,9 @@ export const countryNames: Record<Language, Record<string, string>> = {
     MDA: 'Молдова',
     FRO: 'Фарерські острови',
     ALB: 'Албанія',
+    MKD: 'Північна Македонія',
+    LTU: 'Литва',
+    GIB: 'Гібралтар',
   },
 }
 
@@ -898,4 +910,38 @@ export const teamNamesUkByName: Record<string, string> = {
   'Vora': 'Вора',
   'Laçi': 'Лячі',
   'Partizani': 'Партизані',
+  // North Macedonian First League
+  'FK Struga': 'Струга',
+  'KF Shkendija': 'Шкендія',
+  'GFK Tikves Kavadarci': 'Тіквеш Кавадарці',
+  'FK Vardar Skopje': 'Вардар',
+  'Shkendija Haracine': 'Шкендія Харачіне',
+  'FK Sileks': 'Сілекс',
+  'FK Bregalnica Štip': 'Брегальниця',
+  'Bashkimi': 'Башкімі',
+  'Arsimi': 'Арсімі',
+  'FK Skopje': "Скоп'є",
+  // Lithuanian A Lyga
+  'FK Kauno Žalgiris': 'Жальгіріс Каунас',
+  'Sūduva': 'Судува',
+  'Žalgiris Vilnius': 'Жальгіріс Вільнюс',
+  'FK TransINVEST': 'Трансінвест',
+  'Banga Gargzdai': 'Банга Гаргждай',
+  'Džiugas Telšiai': 'Джюгас Тельшяй',
+  'FK Panevėžys': 'Паневежис',
+  'Hegelmann': 'Гегельманн',
+  'FA Šiauliai': 'Шяуляй',
+  'Riteriai': 'Рітеряй',
+  // Gibraltar Football League
+  'St Josephs': 'Сент-Джозефс',
+  'Lincoln Red Imps': 'Лінкольн Ред Імпс',
+  'Magpies': 'Мегпайс',
+  'Mons Calpe': 'Монс Кальпе',
+  'Glacis United': 'Глейсіс Юнайтед',
+  'Lions Gibraltar': 'Лайонс Гібралтар',
+  'Europa FC': 'Європа',
+  'Europa Point': 'Європа Пойнт',
+  'College 1975 FC': 'Коледж 1975',
+  'Lynx': 'Лінкс',
+  'Hound Dogs': 'Хаунд Догс',
 }

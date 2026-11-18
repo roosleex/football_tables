@@ -55,7 +55,8 @@ class Settings(BaseSettings):
     # Division, the Armenian Premier League, the Latvian Virslīga, the
     # Bosnian Premier League, the Kosovar Superleague, the Veikkausliiga,
     # the Kazakhstan Premier League, the Moldovan Super League, the Faroe
-    # Islands Premier League and the Albanian Superliga).
+    # Islands Premier League, the Albanian Superliga, the North Macedonian
+    # First League, the Lithuanian A Lyga and the Gibraltar Football League).
     # OPENFOOT_API_KEY authenticates requests; FOOTAPI_MAX_REQUESTS_PER_MINUTE
     # controls its per-minute request budget.
     openfoot_api_key: str | None = None
