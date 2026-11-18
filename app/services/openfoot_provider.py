@@ -16,9 +16,14 @@ Faroe Islands Premier League, the Albanian Superliga, the North Macedonian
 First League, the Lithuanian A Lyga, the Gibraltar Football League, the
 Andorran Primera Divisió, the Maltese Premier League, the Estonian Premium
 Liiga, the Georgian Erovnuli Liga, the Northern Irish Premiership, the
-Luxembourg National Division, the Montenegrin First League, the Cymru Premier
-and the Campionato Sammarinese. The Liechtensteiner Cup is also exposed in
-the menu with an empty table, since Liechtenstein has no domestic league.
+Luxembourg National Division, the Montenegrin First League, the Cymru Premier,
+the Campionato Sammarinese, and the Asian top flights (Japan's J1 League, the
+K League 1, the A-League, the Chinese Super League, the Indian Super League,
+the Qatar Stars League, the UAE Pro League, the Saudi Pro League, the Persian
+Gulf Pro League, the Uzbekistan Super League, Thai League 1, the Iraq Stars
+League, Vietnam's V-League 1 and the Indonesia Super League). The
+Liechtensteiner Cup is also exposed in the menu with an empty table, since
+Liechtenstein has no domestic league.
 """
 
 from __future__ import annotations
@@ -154,12 +159,41 @@ _OPENFOOT_LEAGUES: dict[str, tuple[str, str, str]] = {
     ),
 }
 
+# Asian top flights exposed via openfootapi. They are grouped under the Asia
+# menu entry, separate from the European competitions listed above.
+_ASIAN_LEAGUES: dict[str, tuple[str, str, str]] = {
+    "comp_j1_league_jpn": ("J1 League", "Japan", "JPN"),
+    "comp_k_league_1_kor": ("K League 1", "South Korea", "KOR"),
+    "comp_a_league_aus": ("A-League Men", "Australia", "AUS"),
+    "comp_chinese_super_league_chn": ("Chinese Super League", "China", "CHN"),
+    "comp_indian_super_league_ind": ("Indian Super League", "India", "IND"),
+    "comp_qatar_stars_league_qat": ("Qatar Stars League", "Qatar", "QAT"),
+    "comp_uae_pro_league_uae": ("UAE Pro League", "United Arab Emirates", "ARE"),
+    "comp_saudi_pro_league_sau": ("Saudi Pro League", "Saudi Arabia", "SAU"),
+    "comp_persian_gulf_league_irn": ("Persian Gulf Pro League", "Iran", "IRN"),
+    "comp_super_league_uzb": ("Uzbek Super League", "Uzbekistan", "UZB"),
+    "comp_thai_league_1_tha": ("Thai League 1", "Thailand", "THA"),
+    "comp_stars_league_irq": ("Iraq Stars League", "Iraq", "IRQ"),
+    "comp_v_league_vie": ("V-League 1", "Vietnam", "VNM"),
+    "comp_super_league_idn": ("Indonesia Super League", "Indonesia", "IDN"),
+}
+
 # Competitions exposed in the menu even though they have no standings table
 # (Liechtenstein has no domestic league — only a cup). Selecting one shows an
 # empty table.
 _EMPTY_STANDINGS_LEAGUES: dict[str, tuple[str, str, str]] = {
     "comp_cup_lie": ("Liechtensteiner Cup", "Liechtenstein", "LIE"),
 }
+
+
+def _league_definitions() -> list[tuple[str, str, str, str, str]]:
+    """Return every tracked league as ``(id, name, country, code, region)``."""
+    definitions: list[tuple[str, str, str, str, str]] = []
+    for league_id, (fallback_name, country, country_code) in _OPENFOOT_LEAGUES.items():
+        definitions.append((league_id, fallback_name, country, country_code, "Europe"))
+    for league_id, (fallback_name, country, country_code) in _ASIAN_LEAGUES.items():
+        definitions.append((league_id, fallback_name, country, country_code, "Asia"))
+    return definitions
 
 
 class OpenFootProvider:
@@ -204,7 +238,7 @@ class OpenFootProvider:
         by_id = {comp.get("id"): comp for comp in payload.get("data") or []}
 
         leagues: list[League] = []
-        for league_id, (fallback_name, country, country_code) in _OPENFOOT_LEAGUES.items():
+        for league_id, fallback_name, country, country_code, region in _league_definitions():
             comp = by_id.get(league_id)
             if comp is None:
                 raise ProviderError(f"{fallback_name} ({league_id}) not found")
@@ -217,6 +251,7 @@ class OpenFootProvider:
                     name=comp.get("name") or fallback_name,
                     country=comp.get("country") or country,
                     country_code=country_code,
+                    region=region,
                     emblem=None,
                 )
             )
@@ -228,6 +263,7 @@ class OpenFootProvider:
                     name=(comp.get("name") if comp else None) or fallback_name,
                     country=(comp.get("country") if comp else None) or country,
                     country_code=country_code,
+                    region="Europe",
                     emblem=None,
                     standings_available=False,
                 )

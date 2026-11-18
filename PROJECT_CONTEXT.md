@@ -382,6 +382,13 @@ I want current items to add to one big item called Europe. When a user clicks on
 
 ----------
 
+Now add to the main menu item called Asia.
+Using https://openfootapi.com/ API
+add to the main menu item called Asia standings of all asian leagues.
+Add ukrainian language for newly added asian leagues.
+
+----------
+
 
 
 

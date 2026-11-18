@@ -3,60 +3,72 @@ import type { League } from '../types'
 import { Flag } from './Flag'
 import { useLanguage } from '../i18n/LanguageContext'
 
+const REGIONS = ['Europe', 'Asia'] as const
+
+const REGION_LABELS: Record<(typeof REGIONS)[number], 'europe' | 'asia'> = {
+  Europe: 'europe',
+  Asia: 'asia',
+}
+
 interface LeagueListProps {
   leagues: League[]
   selectedCode: string | null
-  onSelect: (code: string | null) => void
+  activeRegion: string
+  onSelectLeague: (code: string) => void
+  onSelectRegion: (region: string) => void
 }
 
-export function LeagueList({ leagues, selectedCode, onSelect }: LeagueListProps) {
+export function LeagueList({
+  leagues,
+  selectedCode,
+  activeRegion,
+  onSelectLeague,
+  onSelectRegion,
+}: LeagueListProps) {
   const { t, leagueName, countryName } = useLanguage()
-  const [open, setOpen] = useState(false)
+  const [openRegion, setOpenRegion] = useState<string | null>(null)
 
-  // "Europe" is the overview item: it is active whenever no specific league is
-  // selected, and clicking it shows the top-3 board in the content area.
-  const europeActive = selectedCode === null
-
-  const handleEuropeClick = () => {
-    if (selectedCode === null) {
-      // Already on the Europe overview: just toggle the league submenu.
-      setOpen((prev) => !prev)
-    } else {
-      // Coming from a specific league: show the overview and open the submenu.
-      onSelect(null)
-      setOpen(true)
-    }
+  const handleRegionClick = (region: string) => {
+    // Selecting a region opens its overview (top-3 board) and toggles its submenu.
+    onSelectRegion(region)
+    setOpenRegion((prev) => (prev === region ? null : region))
   }
 
   return (
     <nav className="league-list" aria-label="Leagues">
-      <button
-        type="button"
-        className={`europe-item ${europeActive ? 'active' : ''}`}
-        onClick={handleEuropeClick}
-        aria-expanded={open}
-      >
-        <span className="europe-label">{t('europe')}</span>
-        <span className="europe-arrow" aria-hidden="true">
-          {open ? '▾' : '▸'}
-        </span>
-      </button>
-      {open && (
-        <div className="league-sublist">
-          {leagues.map((league) => (
-            <button
-              key={league.code}
-              type="button"
-              className={`league-item ${league.code === selectedCode ? 'active' : ''}`}
-              onClick={() => onSelect(league.code)}
-            >
-              <Flag countryCode={league.country_code} />
-              <span className="league-name">{leagueName(league.code)}</span>
-              <span className="league-country">{countryName(league.country_code)}</span>
-            </button>
-          ))}
+      {REGIONS.map((region) => (
+        <div key={region} className="league-group">
+          <button
+            type="button"
+            className={`group-item ${selectedCode === null && activeRegion === region ? 'active' : ''}`}
+            onClick={() => handleRegionClick(region)}
+            aria-expanded={openRegion === region}
+          >
+            <span className="group-label">{t(REGION_LABELS[region])}</span>
+            <span className="group-arrow" aria-hidden="true">
+              {openRegion === region ? '▾' : '▸'}
+            </span>
+          </button>
+          {openRegion === region && (
+            <div className="league-sublist">
+              {leagues
+                .filter((league) => league.region === region)
+                .map((league) => (
+                  <button
+                    key={league.code}
+                    type="button"
+                    className={`league-item ${league.code === selectedCode ? 'active' : ''}`}
+                    onClick={() => onSelectLeague(league.code)}
+                  >
+                    <Flag countryCode={league.country_code} />
+                    <span className="league-name">{leagueName(league.code)}</span>
+                    <span className="league-country">{countryName(league.country_code)}</span>
+                  </button>
+                ))}
+            </div>
+          )}
         </div>
-      )}
+      ))}
     </nav>
   )
 }

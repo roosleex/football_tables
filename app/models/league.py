@@ -8,5 +8,6 @@ class League(BaseModel):
     name: str
     country: str
     country_code: str
+    region: str = "Europe"
     emblem: str | None = None
     standings_available: bool = True

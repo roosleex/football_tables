@@ -26,6 +26,7 @@ export default function App() {
   const { t } = useLanguage()
   const [leagues, setLeagues] = useState<League[]>([])
   const [selectedCode, setSelectedCode] = useState<string | null>(null)
+  const [activeRegion, setActiveRegion] = useState<string>('Europe')
   const [standings, setStandings] = useState<LeagueStandings | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<'loadError' | 'standingsError' | null>(null)
@@ -75,6 +76,21 @@ export default function App() {
 
   const goHome = () => {
     setSelectedCode(null)
+    setActiveRegion('Europe')
+    setStandings(null)
+    setError(null)
+    setLoading(false)
+  }
+
+  const selectLeague = (code: string) => {
+    setSelectedCode(code)
+    const league = leagues.find((item) => item.code === code)
+    if (league) setActiveRegion(league.region)
+  }
+
+  const selectRegion = (region: string) => {
+    setActiveRegion(region)
+    setSelectedCode(null)
     setStandings(null)
     setError(null)
     setLoading(false)
@@ -120,7 +136,9 @@ export default function App() {
           <LeagueList
             leagues={leagues}
             selectedCode={selectedCode}
-            onSelect={(code) => setSelectedCode(code)}
+            activeRegion={activeRegion}
+            onSelectLeague={selectLeague}
+            onSelectRegion={selectRegion}
           />
         </aside>
         <main className="content">
@@ -138,9 +156,9 @@ export default function App() {
             </>
           ) : (
             <TopThreeBoard
-              leagues={leagues}
+              leagues={leagues.filter((league) => league.region === activeRegion)}
               hiddenLeagues={hiddenLeagues}
-              onSelect={setSelectedCode}
+              onSelect={selectLeague}
               onClose={hideLeague}
             />
           )}

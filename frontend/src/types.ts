@@ -3,6 +3,7 @@ export interface League {
   name: string
   country: string
   country_code: string
+  region: string
   emblem: string | null
 }
 
