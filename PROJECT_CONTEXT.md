@@ -362,6 +362,21 @@ Add ukrainian language for newly added league.
 
 ----------
 
+Why in menu some countries have DEU or ENG
+<span class="league-country">DEU</span> or 
+<span class="league-country">ENG</span>
+instead of full country name like 
+<span class="league-country">Бельгія</span>
+Fix it
+
+----------
+
+Why in mobile browser I see flags pictures but on my laptop browser I see some two characters like GB for Premier League or FR for Ligue 1 instead of flag pictures?
+I want to see country flags both on mobile devices and laptops
+Fix it 
+
+----------
+
 
 
 

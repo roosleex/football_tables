@@ -158,7 +158,26 @@ body {
 }
 
 .flag {
-  font-size: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 16px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.flag-img {
+  width: 24px;
+  height: 16px;
+  object-fit: cover;
+  border-radius: 2px;
+  display: block;
+}
+
+.flag-emoji {
+  font-size: 15px;
+  line-height: 1;
 }
 
 .content {

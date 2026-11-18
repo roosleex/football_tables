@@ -1,5 +1,9 @@
-// Convert football-data.org's ISO 3166-1 alpha-3 area codes to alpha-2 so we
-// can build the matching flag emoji.
+import { useState } from 'react'
+
+// Map ISO 3166-1 alpha-3 area codes (football-data.org / openfootapi) to the
+// alpha-2 code used by flagcdn.com, and render the flag as a real image.
+// Windows does not ship colour flag emoji, so the previous emoji approach
+// rendered two regional-indicator letters (e.g. "GB" / "FR") on laptops.
 const ALPHA2: Record<string, string> = {
   ENG: 'GB', SCO: 'GB', WAL: 'GB', NIR: 'GB',
   DEU: 'DE', ESP: 'ES', ITA: 'IT', FRA: 'FR', NLD: 'NL', POR: 'PT',
@@ -13,23 +17,31 @@ const ALPHA2: Record<string, string> = {
   SMR: 'SM', LIE: 'LI', KOS: 'XK',
 }
 
+const FLAG_CDN = 'https://flagcdn.com'
+
 function toAlpha2(countryCode: string): string | null {
   const code = countryCode.trim().toUpperCase()
   if (/^[A-Z]{2}$/.test(code)) return code
   return ALPHA2[code] ?? null
 }
 
-function flagEmoji(alpha2: string): string {
-  return Array.from(alpha2.toUpperCase())
-    .map((ch) => String.fromCodePoint(0x1f1e6 + ch.charCodeAt(0) - 65))
-    .join('')
-}
-
 export function Flag({ countryCode }: { countryCode: string }) {
+  const [failed, setFailed] = useState(false)
   const alpha2 = toAlpha2(countryCode)
+
   return (
     <span className="flag" aria-hidden="true">
-      {alpha2 ? flagEmoji(alpha2) : '🏳️'}
+      {alpha2 && !failed ? (
+        <img
+          className="flag-img"
+          src={`${FLAG_CDN}/${alpha2.toLowerCase()}.svg`}
+          alt=""
+          loading="lazy"
+          onError={() => setFailed(true)}
+        />
+      ) : (
+        <span className="flag-emoji">🏳️</span>
+      )}
     </span>
   )
 }
