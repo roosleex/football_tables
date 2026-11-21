@@ -19,6 +19,8 @@ const ALPHA2: Record<string, string> = {
   ARE: 'AE', SAU: 'SA', IRN: 'IR', UZB: 'UZ', THA: 'TH', IRQ: 'IQ',
   VNM: 'VN', IDN: 'ID',
   USA: 'US', MEX: 'MX', CAN: 'CA', CRI: 'CR',
+  ARG: 'AR', BOL: 'BO', BRA: 'BR', CHI: 'CL', COL: 'CO',
+  ECU: 'EC', PAR: 'PY', PER: 'PE', URU: 'UY', VEN: 'VE',
 }
 
 const FLAG_CDN = 'https://flagcdn.com'

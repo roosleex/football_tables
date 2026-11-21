@@ -95,3 +95,27 @@ def test_league_definitions_includes_north_america() -> None:
     assert by_id["comp_liga_mx_mex"][-1] == "North America"
     assert by_id["comp_canadian_premier_league_can"][-1] == "North America"
     assert by_id["comp_primera_division_crc"][-1] == "North America"
+
+
+def test_league_definitions_includes_south_america() -> None:
+    definitions = _league_definitions()
+    by_id = {entry[0]: entry for entry in definitions}
+    assert by_id["comp_brasileirao_bra"] == (
+        "comp_brasileirao_bra",
+        "Brasileirão Série A",
+        "Brazil",
+        "BRA",
+        "South America",
+    )
+    south_american_ids = (
+        "comp_liga_profesional_arg",
+        "comp_primera_division_bol",
+        "comp_primera_division_chi",
+        "comp_primera_a_col",
+        "comp_ligapro_ecu",
+        "comp_primera_division_par",
+        "comp_liga_1_per",
+        "comp_primera_division_uru",
+        "comp_primera_division_ven",
+    )
+    assert all(by_id[code][-1] == "South America" for code in south_american_ids)

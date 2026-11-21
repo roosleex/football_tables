@@ -406,6 +406,13 @@ Add ukrainian language for newly added North America leagues.
 
 ----------
 
+Now add to the main menu item called South America.
+Using https://openfootapi.com/ API
+add to the main menu item called South America standings of South America  leagues.
+Add ukrainian language for newly added South America leagues.
+
+----------
+
 
 
 

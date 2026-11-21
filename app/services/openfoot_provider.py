@@ -188,6 +188,22 @@ _NORTH_AMERICA_LEAGUES: dict[str, tuple[str, str, str]] = {
     "comp_primera_division_crc": ("Primera División", "Costa Rica", "CRI"),
 }
 
+# South American top flights exposed via openfootapi. They are grouped under the
+# South America menu entry and cover the ten CONMEBOL members whose domestic
+# leagues openfootapi serves.
+_SOUTH_AMERICA_LEAGUES: dict[str, tuple[str, str, str]] = {
+    "comp_liga_profesional_arg": ("Argentine Primera División", "Argentina", "ARG"),
+    "comp_primera_division_bol": ("Bolivian Primera División", "Bolivia", "BOL"),
+    "comp_brasileirao_bra": ("Brasileirão Série A", "Brazil", "BRA"),
+    "comp_primera_division_chi": ("Chilean Primera División", "Chile", "CHI"),
+    "comp_primera_a_col": ("Categoría Primera A", "Colombia", "COL"),
+    "comp_ligapro_ecu": ("LigaPro Serie A", "Ecuador", "ECU"),
+    "comp_primera_division_par": ("Paraguayan Primera División", "Paraguay", "PAR"),
+    "comp_liga_1_per": ("Liga 1", "Peru", "PER"),
+    "comp_primera_division_uru": ("Uruguayan Primera División", "Uruguay", "URU"),
+    "comp_primera_division_ven": ("Venezuelan Primera División", "Venezuela", "VEN"),
+}
+
 # Competitions exposed in the menu even though they have no standings table
 # (Liechtenstein has no domestic league — only a cup). Selecting one shows an
 # empty table.
@@ -205,6 +221,8 @@ def _league_definitions() -> list[tuple[str, str, str, str, str]]:
         definitions.append((league_id, fallback_name, country, country_code, "Asia"))
     for league_id, (fallback_name, country, country_code) in _NORTH_AMERICA_LEAGUES.items():
         definitions.append((league_id, fallback_name, country, country_code, "North America"))
+    for league_id, (fallback_name, country, country_code) in _SOUTH_AMERICA_LEAGUES.items():
+        definitions.append((league_id, fallback_name, country, country_code, "South America"))
     return definitions
 
 
