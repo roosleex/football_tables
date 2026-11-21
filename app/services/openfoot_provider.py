@@ -178,6 +178,16 @@ _ASIAN_LEAGUES: dict[str, tuple[str, str, str]] = {
     "comp_super_league_idn": ("Indonesia Super League", "Indonesia", "IDN"),
 }
 
+# North American top flights exposed via openfootapi. They are grouped under the
+# North America menu entry and cover the United States, Mexico, Canada and Costa
+# Rica (the CONCACAF members whose domestic leagues openfootapi serves).
+_NORTH_AMERICA_LEAGUES: dict[str, tuple[str, str, str]] = {
+    "comp_mls_usa": ("Major League Soccer", "United States", "USA"),
+    "comp_liga_mx_mex": ("Liga MX", "Mexico", "MEX"),
+    "comp_canadian_premier_league_can": ("Canadian Premier League", "Canada", "CAN"),
+    "comp_primera_division_crc": ("Primera División", "Costa Rica", "CRI"),
+}
+
 # Competitions exposed in the menu even though they have no standings table
 # (Liechtenstein has no domestic league — only a cup). Selecting one shows an
 # empty table.
@@ -193,6 +203,8 @@ def _league_definitions() -> list[tuple[str, str, str, str, str]]:
         definitions.append((league_id, fallback_name, country, country_code, "Europe"))
     for league_id, (fallback_name, country, country_code) in _ASIAN_LEAGUES.items():
         definitions.append((league_id, fallback_name, country, country_code, "Asia"))
+    for league_id, (fallback_name, country, country_code) in _NORTH_AMERICA_LEAGUES.items():
+        definitions.append((league_id, fallback_name, country, country_code, "North America"))
     return definitions
 
 

@@ -399,6 +399,13 @@ Missed tests add to the /tests folder
 
 ----------
 
+Now add to the main menu item called North America.
+Using https://openfootapi.com/ API
+add to the main menu item called North America standings of North America  leagues.
+Add ukrainian language for newly added North America leagues.
+
+----------
+
 
 
 

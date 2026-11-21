@@ -34,6 +34,7 @@ export interface Translation {
   closeLeague: string
   europe: string
   asia: string
+  northAmerica: string
 }
 
 export const translations: Record<Language, Translation> = {
@@ -71,6 +72,7 @@ export const translations: Record<Language, Translation> = {
     closeLeague: 'Close league',
     europe: 'Europe',
     asia: 'Asia',
+    northAmerica: 'North America',
   },
   uk: {
     appTitle: 'Футбольні таблиці',
@@ -106,6 +108,7 @@ export const translations: Record<Language, Translation> = {
     closeLeague: 'Закрити лігу',
     europe: 'Європа',
     asia: 'Азія',
+    northAmerica: 'Північна Америка',
   },
 }
 
@@ -178,6 +181,10 @@ export const leagueNames: Record<Language, Record<string, string>> = {
     comp_stars_league_irq: 'Iraq Stars League',
     comp_v_league_vie: 'V-League 1',
     comp_super_league_idn: 'Indonesia Super League',
+    comp_mls_usa: 'Major League Soccer',
+    comp_liga_mx_mex: 'Liga MX',
+    comp_canadian_premier_league_can: 'Canadian Premier League',
+    comp_primera_division_crc: 'Primera División',
   },
   uk: {
     PL: "Прем'єр-ліга",
@@ -247,6 +254,10 @@ export const leagueNames: Record<Language, Record<string, string>> = {
     comp_stars_league_irq: 'Зіркова ліга Іраку',
     comp_v_league_vie: 'В-Ліга 1',
     comp_super_league_idn: 'Індонезійська Суперліга',
+    comp_mls_usa: 'МЛС',
+    comp_liga_mx_mex: 'Ліга МХ',
+    comp_canadian_premier_league_can: "Канадська Прем'єр-ліга",
+    comp_primera_division_crc: 'Прімера Дивізіон',
   },
 }
 
@@ -325,6 +336,10 @@ export const countryNames: Record<Language, Record<string, string>> = {
     IRQ: 'Iraq',
     VNM: 'Vietnam',
     IDN: 'Indonesia',
+    USA: 'United States',
+    MEX: 'Mexico',
+    CAN: 'Canada',
+    CRI: 'Costa Rica',
   },
   uk: {
     GB: 'Англія',
@@ -400,6 +415,10 @@ export const countryNames: Record<Language, Record<string, string>> = {
     IRQ: 'Ірак',
     VNM: "В'єтнам",
     IDN: 'Індонезія',
+    USA: 'США',
+    MEX: 'Мексика',
+    CAN: 'Канада',
+    CRI: 'Коста-Рика',
   },
 }
 
@@ -1408,4 +1427,78 @@ export const teamNamesUkByName: Record<string, string> = {
   'PSS Sleman': 'ПСС Слеман',
   'PSIM Yogyakarta': "ПСІМ Джок'якарта",
   'Persijap Jepara': 'Персіджап Джепара',
+
+  // North America — Major League Soccer (USA)
+  'Nashville SC': 'Нашвілл СК',
+  'Vancouver Whitecaps': 'Ванкувер Вайткепс',
+  'Inter Miami': 'Інтер Маямі',
+  'FC Dallas': 'Даллас',
+  'New England Revolution': 'Нью-Інгленд Революшн',
+  'Chicago Fire': 'Чикаго Файр',
+  'Charlotte': 'Шарлотт',
+  'St. Louis City': 'Сент-Луїс Сіті',
+  'San Jose Earthquakes': 'Сан-Хосе Ерсквейкс',
+  'Houston Dynamo': "Х'юстон Динамо",
+  'Philadelphia Union': 'Філадельфія Юніон',
+  'Los Angeles FC': 'Лос-Анджелес',
+  'Columbus Crew': 'Коламбус Крю',
+  'Portland Timbers': 'Портленд Тімберс',
+  'Seattle Sounders': 'Сіетл Саундерс',
+  'FC Cincinnati': 'Цинциннаті',
+  'Orlando City': 'Орландо Сіті',
+  'Real Salt Lake': 'Реал Солт-Лейк',
+  'Minnesota United': 'Міннесота Юнайтед',
+  'Los Angeles Galaxy': 'Лос-Анджелес Гелексі',
+  'Colorado Rapids': 'Колорадо Репідс',
+  'New York City': 'Нью-Йорк Сіті',
+  'New York Red Bulls': 'Нью-Йорк Ред Буллз',
+  'Toronto FC': 'Торонто',
+  'San Diego FC': 'Сан-Дієго',
+  'Austin FC': 'Остін',
+  'Atlanta Utd': 'Атланта Юнайтед',
+  'DC United': 'Ді Сі Юнайтед',
+  'CF Montreal': 'Монреаль',
+  'Sporting Kansas City': 'Спортінг Канзас-Сіті',
+
+  // North America — Liga MX (Mexico)
+  'Cruz Azul': 'Крус Асуль',
+  'Club America': 'Америка',
+  'Guadalajara Chivas': 'Гвадалахара Чівас',
+  'Toluca': 'Толука',
+  'Atlas': 'Атлас',
+  'Santos Laguna': 'Сантос Лагуна',
+  'Monterrey': 'Монтеррей',
+  'Club Leon': 'Леон',
+  'Pachuca': 'Пачука',
+  'Club Tijuana': 'Тіхуана',
+  'UNAM Pumas': 'УНАМ Пумас',
+  'Queretaro': 'Керетаро',
+  'Puebla': 'Пуебла',
+  'Atl. San Luis': 'Атлетіко Сан-Луїс',
+  'Tigres UANL': 'Тигрес УАНЛ',
+  'Atlante': 'Атланте',
+  'Necaxa': 'Некакса',
+  'Juarez': 'Хуарес',
+
+  // North America — Canadian Premier League (Canada)
+  'Cavalry FC': 'Кавальрі',
+  'Forge FC': 'Фордж',
+  'Atlético Ottawa': 'Атлетіко Оттава',
+  'Supra du Québec': 'Супра дю Квебек',
+  'Vancouver FC': 'Ванкувер',
+  'Inter Toronto FC': 'Інтер Торонто',
+  'HFX Wanderers FC': 'Галіфакс Вондерерс',
+  'Pacific FC': 'Пасіфік',
+
+  // North America — Primera División (Costa Rica)
+  'Deportivo Saprissa': 'Депортіво Сапрісса',
+  'C.S. Cartaginés': 'Картахінес',
+  'Sporting FC': 'Спортінг',
+  'LD Alajuelense': 'Алахуеленсе',
+  'Deportiva San Carlos': 'Депортіва Сан-Карлос',
+  'Inter San Carlos': 'Інтер Сан-Карлос',
+  'Puntarenas FC': 'Пунтаренас',
+  'Club Sport Herediano': 'Ередіано',
+  'Escorpiones': 'Ескорпіонес',
+  'Municipal Pérez Zeledón': 'Мунісіпаль Перес Селедон',
 }

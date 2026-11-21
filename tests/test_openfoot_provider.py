@@ -80,3 +80,18 @@ def test_league_definitions_includes_europe_and_asia() -> None:
         "Asia",
     )
     assert all(len(entry) == 5 for entry in definitions)
+
+
+def test_league_definitions_includes_north_america() -> None:
+    definitions = _league_definitions()
+    by_id = {entry[0]: entry for entry in definitions}
+    assert by_id["comp_mls_usa"] == (
+        "comp_mls_usa",
+        "Major League Soccer",
+        "United States",
+        "USA",
+        "North America",
+    )
+    assert by_id["comp_liga_mx_mex"][-1] == "North America"
+    assert by_id["comp_canadian_premier_league_can"][-1] == "North America"
+    assert by_id["comp_primera_division_crc"][-1] == "North America"
