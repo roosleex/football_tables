@@ -389,6 +389,16 @@ Add ukrainian language for newly added asian leagues.
 
 ----------
 
+Check the app football_tables on security issues and vulnerabilities.
+If you will find any fix them. 
+
+----------
+
+Check backend if all neccessary tests are existed.
+Missed tests add to the /tests folder
+
+----------
+
 
 
 
