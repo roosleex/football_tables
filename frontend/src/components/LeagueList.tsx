@@ -3,16 +3,17 @@ import type { League } from '../types'
 import { Flag } from './Flag'
 import { useLanguage } from '../i18n/LanguageContext'
 
-const REGIONS = ['Europe', 'Asia', 'North America', 'South America'] as const
+const REGIONS = ['Europe', 'Asia', 'North America', 'South America', 'Africa'] as const
 
 const REGION_LABELS: Record<
   (typeof REGIONS)[number],
-  'europe' | 'asia' | 'northAmerica' | 'southAmerica'
+  'europe' | 'asia' | 'northAmerica' | 'southAmerica' | 'africa'
 > = {
   Europe: 'europe',
   Asia: 'asia',
   'North America': 'northAmerica',
   'South America': 'southAmerica',
+  Africa: 'africa',
 }
 
 interface LeagueListProps {

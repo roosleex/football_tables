@@ -21,6 +21,7 @@ const ALPHA2: Record<string, string> = {
   USA: 'US', MEX: 'MX', CAN: 'CA', CRI: 'CR',
   ARG: 'AR', BOL: 'BO', BRA: 'BR', CHI: 'CL', COL: 'CO',
   ECU: 'EC', PAR: 'PY', PER: 'PE', URU: 'UY', VEN: 'VE',
+  DZA: 'DZ', EGY: 'EG', MAR: 'MA', NGA: 'NG', RSA: 'ZA', TUN: 'TN',
 }
 
 const FLAG_CDN = 'https://flagcdn.com'

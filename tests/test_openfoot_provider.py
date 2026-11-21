@@ -119,3 +119,23 @@ def test_league_definitions_includes_south_america() -> None:
         "comp_primera_division_ven",
     )
     assert all(by_id[code][-1] == "South America" for code in south_american_ids)
+
+
+def test_league_definitions_includes_africa() -> None:
+    definitions = _league_definitions()
+    by_id = {entry[0]: entry for entry in definitions}
+    assert by_id["comp_npfl_nga"] == (
+        "comp_npfl_nga",
+        "Nigerian Professional Football League",
+        "Nigeria",
+        "NGA",
+        "Africa",
+    )
+    african_ids = (
+        "comp_ligue_1_dza",
+        "comp_egyptian_prem_egy",
+        "comp_botola_pro_mar",
+        "comp_psl_rsa",
+        "comp_ligue_1_tun",
+    )
+    assert all(by_id[code][-1] == "Africa" for code in african_ids)

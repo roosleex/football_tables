@@ -413,6 +413,13 @@ Add ukrainian language for newly added South America leagues.
 
 ----------
 
+Now add to the main menu item called Africa.
+Using https://openfootapi.com/ API
+add to the main menu item called Africa standings of Africa leagues.
+Add ukrainian language for newly added Africa leagues.
+
+----------
+
 
 
 

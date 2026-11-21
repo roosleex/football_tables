@@ -204,6 +204,17 @@ _SOUTH_AMERICA_LEAGUES: dict[str, tuple[str, str, str]] = {
     "comp_primera_division_ven": ("Venezuelan Primera División", "Venezuela", "VEN"),
 }
 
+# African top flights exposed via openfootapi. They are grouped under the Africa
+# menu entry and cover the CAF members whose domestic leagues openfootapi serves.
+_AFRICA_LEAGUES: dict[str, tuple[str, str, str]] = {
+    "comp_ligue_1_dza": ("Algerian Ligue 1", "Algeria", "DZA"),
+    "comp_egyptian_prem_egy": ("Egyptian Premier League", "Egypt", "EGY"),
+    "comp_botola_pro_mar": ("Botola Pro", "Morocco", "MAR"),
+    "comp_npfl_nga": ("Nigerian Professional Football League", "Nigeria", "NGA"),
+    "comp_psl_rsa": ("South African Premiership", "South Africa", "RSA"),
+    "comp_ligue_1_tun": ("Tunisian Ligue 1", "Tunisia", "TUN"),
+}
+
 # Competitions exposed in the menu even though they have no standings table
 # (Liechtenstein has no domestic league — only a cup). Selecting one shows an
 # empty table.
@@ -223,6 +234,8 @@ def _league_definitions() -> list[tuple[str, str, str, str, str]]:
         definitions.append((league_id, fallback_name, country, country_code, "North America"))
     for league_id, (fallback_name, country, country_code) in _SOUTH_AMERICA_LEAGUES.items():
         definitions.append((league_id, fallback_name, country, country_code, "South America"))
+    for league_id, (fallback_name, country, country_code) in _AFRICA_LEAGUES.items():
+        definitions.append((league_id, fallback_name, country, country_code, "Africa"))
     return definitions
 
 
