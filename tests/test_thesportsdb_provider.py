@@ -73,3 +73,9 @@ def test_form_reformats_compact_string() -> None:
     assert _form("WDLDW") == "W,D,L,D,W"
     assert _form("") is None
     assert _form(None) is None
+
+
+def test_form_is_oldest_first() -> None:
+    # strForm is emitted most-recent-first ("WWWDD" -> latest game a win).
+    # The provider reverses it so the rightmost badge is the latest result.
+    assert _form("WWWDD") == "D,D,W,W,W"

@@ -49,7 +49,14 @@ def test_parse_table_maps_fields_and_form() -> None:
     assert row.played == 10
     assert row.won == 6
     assert row.points == 20
-    assert row.form == "W,D,L,W,D"
+    # openfootapi returns form most-recent-first; it is reversed to
+    # oldest-first so the rightmost badge is the latest result.
+    assert row.form == "D,W,L,D,W"
+
+
+def test_parse_table_form_is_oldest_first() -> None:
+    rows = _parse_table([_entry(1, "Team", form=["W", "L", "D", "W", "L"])])
+    assert rows[0].form == "L,W,D,L,W"
 
 
 def test_parse_table_missing_form_is_none() -> None:

@@ -108,7 +108,7 @@ def _generate_table(league_code: str, team_names: list[str]) -> list[StandingRow
 
         goals_for = round(games * (0.9 + 1.1 * strength))
         goals_against = round(games * (1.6 - 0.7 * strength))
-        form = "".join(
+        form = ",".join(
             rng.choices("WDL", weights=[win_prob, draw_prob, 1 - win_prob - draw_prob], k=5)
         )
 

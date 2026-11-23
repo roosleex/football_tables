@@ -175,7 +175,10 @@ def _form(value: Any) -> str | None:
     form = (value or "").strip()
     if not form:
         return None
-    return ",".join(list(form))
+    # TheSportsDB emits strForm most-recent-first (e.g. "WWWDD" means the
+    # latest game was a win). Store it oldest-first so the rightmost badge in
+    # the Form column is always the most recent (5th) result.
+    return ",".join(reversed(form[:5]))
 
 
 def _group_index(group: str) -> int:

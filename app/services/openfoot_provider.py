@@ -333,6 +333,8 @@ def _parse_table(table: list[dict[str, Any]]) -> list[StandingRow]:
     for entry in table:
         team = entry.get("team") or {}
         total = entry.get("total") or {}
+        # openfootapi lists recent form most-recent-first; reverse it so the
+        # rightmost badge in the Form column is the most recent (5th) result.
         form = entry.get("form") or []
         rows.append(
             StandingRow(
@@ -351,7 +353,7 @@ def _parse_table(table: list[dict[str, Any]]) -> list[StandingRow]:
                 goals_against=int(total.get("goalsAgainst", 0)),
                 goal_difference=int(total.get("goalDifference", 0)),
                 points=int(total.get("points", 0)),
-                form=",".join(form) if form else None,
+                form=",".join(reversed(form[:5])) if form else None,
             )
         )
     return rows
