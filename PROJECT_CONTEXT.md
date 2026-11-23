@@ -420,6 +420,13 @@ Add ukrainian language for newly added Africa leagues.
 
 ----------
 
+For all leagues the last 5 games result will be shown in the same order.
+In the standings table in the column called Form
+last 5 games result must be shown in the same order
+1 2 3 4 5 where 5 is the last game result
+
+----------
+
 
 
 
